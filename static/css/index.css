@@ -1,0 +1,231 @@
+html, body{
+    height: 100%;
+    margin: auto
+}
+
+body{
+    display: flex;
+    gap: 20px
+    
+}
+
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
+
+aside{
+    width: 235px;
+    height: 100%;
+    background-color: black;
+    background: url('/static/images/barra_lateral.png') no-repeat center center;
+    background-size: cover; 
+    margin-left: -30px;
+    position: fixed;
+    
+
+} 
+
+.lista-lateral{
+    list-style: none;
+    margin-left: 10px;
+    margin-top: 50px;
+    font-size: 17px;
+    color: #5a4d3e ;
+    
+    
+}
+
+.lista-lateral li{
+    margin-top: 15px;
+    font-family: "MedievalSharp", cursive;
+  font-weight: 600;
+  font-style: normal;
+  cursor: pointer;
+}
+
+main{
+   
+    width: 100%;
+    margin-left: 250px;
+    padding: 20px;
+    font-family: "EB Garamond", serif;
+  font-optical-sizing: auto;
+  margin-top: 0px;
+}
+
+search{
+    width: 100%;
+    margin-top: 40px;
+    display: flex ;
+    flex-wrap: wrap;
+    font-family: "EB Garamond", serif;
+  font-optical-sizing: auto;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.main-pesquisa{
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    
+
+}
+.main-pesquisa hr{
+    width: 100%;
+    height: 1px;
+    background-color: gray;
+    margin-top: -5px;
+}
+.main-input-pesquisa input[type="text"] {
+    border: 0;
+    outline: none;
+    padding: 10px;
+}
+
+
+
+.main-filtros{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-family: "EB Garamond", serif;
+  font-optical-sizing: auto;
+}
+
+.main-filtros select {
+    border: none;
+    outline: none; 
+    background: none; 
+    padding: 5px;
+    text-align: end;
+    font-family: "EB Garamond", serif;
+  font-optical-sizing: auto;
+  color: #5a4d3e;
+  font-weight:bold;
+}
+
+.main-letras{
+    width: 100%;
+    text-align: center;
+   
+}
+
+.main-letras a{
+    text-decoration: none;
+    color: #5a4d3e;
+    font-family: "MedievalSharp", cursive;
+  font-weight: 600;
+  font-style: normal;
+  margin-left: 20px;
+  font-family: "EB Garamond", serif;
+  font-optical-sizing: auto;
+}
+
+.resultados{
+    color: #5a4d3e;
+    font-family: "EB Garamond", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  margin-left: 20px;
+  font-size: 18px;
+}
+
+.hr_resultados{
+    width: 100%;
+    height: 1px;
+    background-color: gray;
+    margin-top: -2px;
+}
+
+section{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.livro-exemple{
+    width: 130px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-family: "EB Garamond", serif;
+  font-optical-sizing: auto;
+}
+
+.livro-exemple span{
+    color:#5a4d3e;
+    font-weight: bold;
+}
+
+.livro-exemple i{
+    color: gray;
+}
+
+
+
+
+
+.form-addlivro label {
+    display: block;
+    font-weight: 400;
+    font-family: "EB Garamond", serif;
+  font-optical-sizing: auto;
+    
+}
+
+.form-addlivro input[type="text"],
+.form-addlivro select {
+    width: 100%;                      
+    border: none;                    
+    border-bottom: 1px solid #131313;    
+    font-size: 14px;
+    background: transparent;
+    outline: none;     
+    font-family: "EB Garamond", serif;
+  font-optical-sizing: auto;               
+}
+
+.form-addlivro input[type="text"]:focus,
+.form-addlivro select:focus {
+    border-bottom: 1px solid #151515; 
+}
+
+.form-addlivro button {
+    background-color: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+    color: #5a4d3e;
+    font-weight: BOLD;
+    font-size: larger;
+    text-align: end;
+    font-family: "EB Garamond", serif;
+  font-optical-sizing: auto;
+}
+
+@media (min-width: 800px) {
+    .navbar{
+        display: none !important;
+
+    }
+
+    
+}
+
+/* Quando a tela for menor que 800px, o offcanvas será oculto e o botão será visível */
+@media (max-width: 799px) {
+    .aside2{
+        display: none;
+
+    }
+
+    main{
+        margin-left: 0;
+    }
+}

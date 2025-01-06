@@ -176,6 +176,7 @@ section{
     font-weight: 400;
     font-family: "EB Garamond", serif;
   font-optical-sizing: auto;
+  margin-bottom: 8px; /* Espaço abaixo do label */
     
 }
 
@@ -188,7 +189,8 @@ section{
     background: transparent;
     outline: none;     
     font-family: "EB Garamond", serif;
-  font-optical-sizing: auto;               
+  font-optical-sizing: auto;  
+  margin-bottom: 16px; /* Espaço abaixo do input */             
 }
 
 .form-addlivro input[type="text"]:focus,
@@ -207,6 +209,7 @@ section{
     text-align: end;
     font-family: "EB Garamond", serif;
   font-optical-sizing: auto;
+  margin-bottom: 16px; /* Espaço abaixo do input */
 }
 
 @media (min-width: 800px) {

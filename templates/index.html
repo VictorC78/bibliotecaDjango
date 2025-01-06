@@ -94,23 +94,35 @@
                             </div>
                         </div>
                     
+                        <div class="categoria-colecao">
+                            <div class="categoria">
+                                <label for="{{ livro_form.categoria.id_for_label }}">Categoria:</label>
+                                {{ livro_form.categoria }}
+                            </div>
+                            
+                            <div class="colecao">
+                                <label for="{{ livro_form.colecao.id_for_label }}">Coleção:</label>
+                                {{ livro_form.colecao }}
+                            </div>
+                        </div>
+                        
                         <div>
-                            <label for="{{ livro_form.categoria.id_for_label }}">Categoria:</label>
-                            {{ livro_form.categoria }}
+                            <label for="id_imagem">Imagem:</label>
+                            <input type="file" id="id_imagem" name="imagem" class="custom-file-input" accept="image/*">
+                            <label class="custom-file-button" for="id_imagem">Escolher Imagem</label>
+                            <span class="file-name"></span>
                         </div>
                     
-                        <div>
-                            <label for="{{ livro_form.colecao.id_for_label }}">Coleção:</label>
-                            {{ livro_form.colecao }}
-                        </div>
-                        
-                        <div>
-                            <label for="{{ livro_form.imagem.id_for_label }}">Imagem:</label>
-                            {{ livro_form.imagem }}
-                        </div>
-                        
                         <button name="salvar_livro" type="submit"><u>ADICIONAR</u></button>
                     </form>
+                    
+                    <script>
+                        document.getElementById("id_imagem").addEventListener("change", function (event) {
+                            const fileName = event.target.files[0] ? event.target.files[0].name : "Nenhuma imagem selecionada";
+                            document.querySelector(".file-name").textContent = fileName;
+                        });
+                        
+                    </script>
                     
                     
                 </div>

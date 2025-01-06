@@ -82,8 +82,12 @@
                         </div>
 
                         <div>
-                            <label for="autor">Autor:</label>
-                            <input type="text" id="autor" name="autor">
+                            <label for="categoria">Autor:</label>
+                            <select name="autor" id="autor" class="form-addlivro">
+                            {% for autor in autores %}
+                                <option value="{{ autor.id }}">{{ autor.nome }}</option>
+                            {% endfor %}
+                            </select>
                         </div>
 
                         <div>
@@ -91,7 +95,7 @@
                             <input type="text" id="ano" name="ano">
                         </div>
                         <div>
-                            <label for="categoria">Categoria</label>
+                            <label for="categoria">Categoria:</label>
                             <select name="categoria" id="categoria" class="form-addlivro">
                                 {% for categoria in categorias %}
                                     <option value="{{ categoria.id }}">{{ categoria.nome }}</option>
@@ -161,18 +165,21 @@
                     font-style: normal;
                     color: #5a4d3e;">NOVO AUTOR+</h4>
                     <br>
-                    <form class="form-addlivro" action="">
-                        <div>
-                            <label for="nome">Nome:</label>
-                            <input type="text" id="nome" name="nome">
-                        </div><br>
-
-                        <div>
-                            <label for="autor">Ano de nascimento:</label>
-                            <input type="text" id="autor" name="autor">
-                        </div>
-                        <br>
-                        <button type="submit"><u>ADICIONAR</u></button>
+                    <form class="form-addlivro" method="post">
+                        {% csrf_token %}
+                        <label for="{{ autor_form.nome.id_for_label }}">Nome do Autor:</label>
+                        {{ autor_form.nome }}
+                        
+                        <label for="{{ autor_form.biografia.id_for_label }}">Biografia:</label>
+                        {{ autor_form.biografia }}
+                        
+                        <label for="{{ autor_form.aniversario.id_for_label }}">Data de Aniversário:</label>
+                        {{ autor_form.aniversario }}
+                        
+                        <label for="{{ autor_form.nacionalidade.id_for_label }}">Nacionalidade:</label>
+                        {{ autor_form.nacionalidade }}
+                        
+                        <button name="salvar_autor" type="submit"><u>ADICIONAR AUTOR</u></button>
                     </form>
                 </div>
             </div>

@@ -181,7 +181,9 @@ section{
 }
 
 .form-addlivro input[type="text"],
-.form-addlivro select {
+.form-addlivro select, 
+.form-addlivro input[type="date"]
+ {
     width: 100%;                      
     border: none;                    
     border-bottom: 1px solid #131313;    
@@ -194,7 +196,8 @@ section{
 }
 
 .form-addlivro input[type="text"]:focus,
-.form-addlivro select:focus {
+.form-addlivro select:focus, 
+.form-addlivro input[type="date"]:focus {
     border-bottom: 1px solid #151515; 
 }
 
@@ -211,6 +214,8 @@ section{
   font-optical-sizing: auto;
   margin-bottom: 16px; /* Espaço abaixo do input */
 }
+
+
 
 @media (min-width: 800px) {
     .navbar{

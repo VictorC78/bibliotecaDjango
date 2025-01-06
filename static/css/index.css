@@ -182,7 +182,8 @@ section{
 
 .form-addlivro input[type="text"],
 .form-addlivro select, 
-.form-addlivro input[type="date"]
+.form-addlivro input[type="date"],
+.form-addlivro input[type="number"]
  {
     width: 100%;                      
     border: none;                    
@@ -192,12 +193,14 @@ section{
     outline: none;     
     font-family: "EB Garamond", serif;
   font-optical-sizing: auto;  
-  margin-bottom: 16px; /* Espaço abaixo do input */             
+  margin-bottom: 12px; /* Espaço abaixo do input */             
 }
 
 .form-addlivro input[type="text"]:focus,
 .form-addlivro select:focus, 
-.form-addlivro input[type="date"]:focus {
+.form-addlivro input[type="date"]:focus,
+.form-addlivro input[type="number"]:focus
+{
     border-bottom: 1px solid #151515; 
 }
 
@@ -212,7 +215,7 @@ section{
     text-align: end;
     font-family: "EB Garamond", serif;
   font-optical-sizing: auto;
-  margin-bottom: 16px; /* Espaço abaixo do input */
+  margin-bottom: 12px; /* Espaço abaixo do input */
 }
 
 

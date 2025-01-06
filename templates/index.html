@@ -75,43 +75,31 @@
                     font-style: normal;
                     color: #5a4d3e;">NOVO LIVRO+</h4>
                     <br>
-                    <form class="form-addlivro" action="">
+                    <form class="form-addlivro" method="post">
+                        {% csrf_token %}
                         <div>
-                            <label for="nome">Nome:</label>
-                            <input type="text" id="nome" name="nome">
-                        </div>
-
-                        <div>
-                            <label for="categoria">Autor:</label>
-                            <select name="autor" id="autor" class="form-addlivro">
-                            {% for autor in autores %}
-                                <option value="{{ autor.id }}">{{ autor.nome }}</option>
-                            {% endfor %}
-                            </select>
-                        </div>
-
-                        <div>
-                            <label for="ano">Ano:</label>
-                            <input type="text" id="ano" name="ano">
+                            <label for="{{ livro_form.nome.id_for_label }}">Nome:</label>
+                            {{ livro_form.nome }}
                         </div>
                         <div>
-                            <label for="categoria">Categoria:</label>
-                            <select name="categoria" id="categoria" class="form-addlivro">
-                                {% for categoria in categorias %}
-                                    <option value="{{ categoria.id }}">{{ categoria.nome }}</option>
-                                {% endfor %}
-                            </select>
-                            
+                            <label for="{{ livro_form.autor.id_for_label }}">Autor:</label>
+                            {{ livro_form.autor }}
                         </div>
                         <div>
-                            <label for="colecao">Coleção</label>
-                            <select name="" id="colecao">
-                                <option value=""></option>
-                            </select>
+                            <label for="{{ livro_form.ano.id_for_label }}">Ano:</label>
+                            {{ livro_form.ano }}
                         </div>
-                        
-                        <button type="submit"><u>ADICIONAR</u></button>
+                        <div>
+                            <label for="{{ livro_form.categoria.id_for_label }}">Categoria:</label>
+                            {{ livro_form.categoria }}
+                        </div>
+                        <div>
+                            <label for="{{ livro_form.colecao.id_for_label }}">Coleção:</label>
+                            {{ livro_form.colecao }}
+                        </div>
+                        <button name="salvar_livro" type="submit"><u>ADICIONAR</u></button>
                     </form>
+                    
                 </div>
             </div>
         </div>
@@ -132,18 +120,15 @@
                     font-style: normal;
                     color: #5a4d3e;">NOVA COLEÇÃO+</h4>
                     <br>
-                    <form class="form-addlivro" action="">
-                        <div>
-                            <label for="nome">Nome:</label>
-                            <input type="text" id="nome" name="nome">
-                        </div><br>
-
-                        <div>
-                            <label for="autor">Autor:</label>
-                            <input type="text" id="autor" name="autor">
-                        </div>
+                    <form method="post" class="form-addlivro">
+                        {% csrf_token %}
+                        <label for="{{ colecao_form.nome.id_for_label }}">Nome da Coleção:</label>
+                        {{ colecao_form.nome }}
+                        <label for="{{ colecao_form.descricao.id_for_label }}">Descrição da Coleção:</label>
+                        {{ colecao_form.descricao }}
+                        
                         <br>
-                        <button type="submit"><u>ADICIONAR</u></button>
+                        <button name="salvar_colecao" type="submit"><u>ADICIONAR</u></button>
                     </form>
                 </div>
             </div>
@@ -179,7 +164,7 @@
                         <label for="{{ autor_form.nacionalidade.id_for_label }}">Nacionalidade:</label>
                         {{ autor_form.nacionalidade }}
                         
-                        <button name="salvar_autor" type="submit"><u>ADICIONAR AUTOR</u></button>
+                        <button name="salvar_autor" type="submit"><u>ADICIONAR</u></button>
                     </form>
                 </div>
             </div>
@@ -231,13 +216,17 @@
             <div class="main-filtros">
                 <span style="color: gray;">Filtrar por:</span>
 
-                <select name="" id="">
-                    <option disabled selected>Coleção</option>
-                    <option value="">Harry Potter</option>
+                <select name="colecao-pesquisa" id="colecao" class="form-addlivro">
+                    <option disabled selected>Coleção:</option>
+                    {% for colecao in colecoes %}
+                        <option value="{{ colecao.id }}">{{ colecao.nome }}</option>
+                    {% endfor %}
                 </select>
-                <select name="" id="">
-                    <option disabled selected>Autor</option>
-                    <option value="">J.K Rowling</option>
+                <select name="autor-pesquisa" id="autor" class="form-addlivro">
+                    <option disabled selected>Autor:</option>
+                    {% for autor in autores %}
+                        <option value="{{ autor.id }}">{{ autor.nome }}</option>
+                    {% endfor %}
                 </select>
             </div>
         </search>
@@ -276,33 +265,16 @@
         <hr class="hr_resultados">
         <br>
         <section>
+            {% for livro in livros %}
             <div class="livro-exemple">
                 <img src="https://m.media-amazon.com/images/I/41897yAI4LL._SY445_SX342_DpWeblab_.jpg"
                     alt="Harry Potter e a Pedra Filosofal" width="100">
-                <span>Harry Potter e a Pedra Filosofal</span>
-                <i>J.K. Rowling</i>
+                <span>{{ livro.nome }}</span>
+                <i>{{ livro.autor.nome }}</i>
             </div>
+            {% endfor %}
 
-            <div class="livro-exemple">
-                <img src="https://m.media-amazon.com/images/I/51SnGLrrJcL._SY445_SX342_DpWeblab_.jpg"
-                    alt="Harry Potter e a Câmara Secreta" width="100">
-                <span>Harry Potter e a Câmara Secreta</span>
-                <i>J.K. Rowling</i>
-            </div>
-
-            <div class="livro-exemple">
-                <img src="https://m.media-amazon.com/images/I/81u+ljPVifL._SY425_.jpg"
-                    alt="Harry Potter e o Prisioneiro de Azkaban" width="100">
-                <span>Harry Potter e o Prisioneiro de Azkaban</span>
-                <i>J.K. Rowling</i>
-            </div>
-
-            <div class="livro-exemple">
-                <img src="https://m.media-amazon.com/images/I/51DDABrpU5L._SY445_SX342_DpWeblab_.jpg"
-                    alt="Harry Potter e o Cálice de Fogo" width="100">
-                <span>Harry Potter e o Cálice de Fogo</span>
-                <i>J.K. Rowling</i>
-            </div>
+           
 
            
         </section>

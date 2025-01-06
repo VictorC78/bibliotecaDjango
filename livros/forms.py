@@ -1,6 +1,25 @@
 from django import forms
-from .models import Autor, Categoria
+from .models import Autor, Categoria, Colecao, Livro
 
+class LivroForm(forms.ModelForm):
+    class Meta:
+        model = Livro
+        fields = ['nome', 'autor', 'ano', 'categoria', 'colecao']
+        widgets = {
+            'nome': forms.TextInput(attrs={'class': 'form-addlivro', 'required': 'required'}),
+            'autor': forms.Select(attrs={'class': 'form-addlivro'}),
+            'ano': forms.NumberInput(attrs={'class': 'form-addlivro', 'required': 'required'}),
+            'categoria': forms.Select(attrs={'class': 'form-addlivro'}),
+            'colecao': forms.Select(attrs={'class': 'form-addlivro'}),
+        }
+        labels = {
+            'nome': 'Nome do Livro:',
+            'autor': 'Autor:',
+            'ano': 'Ano:',
+            'categoria': 'Categoria:',
+            'colecao': 'Coleção:',
+        }
+        
 class CategoriaForm(forms.ModelForm):
     class Meta:
         model = Categoria
@@ -30,3 +49,19 @@ class AutorForm(forms.ModelForm):
             'aniversario': 'Data de Aniversário',
             'nacionalidade': 'Nacionalidade',
         }
+
+class ColecaoForm(forms.ModelForm):
+    class Meta:
+        model = Colecao
+        fields = ['nome', 'descricao']
+        widgets = {
+            'nome': forms.TextInput(attrs={'class': 'form-addlivro', 'required': 'required'}),
+            'descricao': forms.TextInput(attrs={'class': 'form-addlivro', 'required': 'required'}),
+            
+        }
+        labels = {
+            'nome': 'Nome da coleção:',
+            'descricao': 'Descrição da coleção:',
+            
+        }
+

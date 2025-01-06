@@ -4,13 +4,14 @@ from .models import Autor, Categoria, Colecao, Livro
 class LivroForm(forms.ModelForm):
     class Meta:
         model = Livro
-        fields = ['nome', 'autor', 'ano', 'categoria', 'colecao']
+        fields = ['nome', 'autor', 'ano', 'categoria', 'colecao', 'imagem']  # Incluído 'imagem'
         widgets = {
             'nome': forms.TextInput(attrs={'class': 'form-addlivro', 'required': 'required'}),
             'autor': forms.Select(attrs={'class': 'form-addlivro'}),
             'ano': forms.NumberInput(attrs={'class': 'form-addlivro', 'required': 'required'}),
             'categoria': forms.Select(attrs={'class': 'form-addlivro'}),
             'colecao': forms.Select(attrs={'class': 'form-addlivro'}),
+            'imagem': forms.FileInput(attrs={'class': 'form-addlivro'}),
         }
         labels = {
             'nome': 'Nome do Livro:',
@@ -18,6 +19,7 @@ class LivroForm(forms.ModelForm):
             'ano': 'Ano:',
             'categoria': 'Categoria:',
             'colecao': 'Coleção:',
+            'imagem': 'Imagem do Livro:',
         }
         
 class CategoriaForm(forms.ModelForm):

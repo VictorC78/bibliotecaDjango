@@ -176,7 +176,7 @@ section{
     font-weight: 400;
     font-family: "EB Garamond", serif;
   font-optical-sizing: auto;
-  margin-bottom: 8px; /* Espaço abaixo do label */
+  margin-bottom: 8px; 
     
 }
 
@@ -193,7 +193,7 @@ section{
     outline: none;     
     font-family: "EB Garamond", serif;
   font-optical-sizing: auto;  
-  margin-bottom: 12px; /* Espaço abaixo do input */             
+  margin-bottom: 12px;          
 }
 
 .form-addlivro input[type="text"]:focus,
@@ -215,8 +215,19 @@ section{
     text-align: end;
     font-family: "EB Garamond", serif;
   font-optical-sizing: auto;
-  margin-bottom: 12px; /* Espaço abaixo do input */
+  margin-bottom: 12px; 
 }
+
+/* Container para os campos Autor e Ano */
+.autor-ano {
+    display: flex;
+    justify-content: space-between; /* Espaço igual entre os campos */
+}
+
+.autor, .ano {
+    width: 48%; /* Ajuste a largura conforme necessário */
+}
+
 
 
 

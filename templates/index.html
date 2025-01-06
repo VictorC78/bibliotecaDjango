@@ -75,30 +75,43 @@
                     font-style: normal;
                     color: #5a4d3e;">NOVO LIVRO+</h4>
                     <br>
-                    <form class="form-addlivro" method="post">
+                    <form class="form-addlivro" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div>
                             <label for="{{ livro_form.nome.id_for_label }}">Nome:</label>
                             {{ livro_form.nome }}
                         </div>
-                        <div>
-                            <label for="{{ livro_form.autor.id_for_label }}">Autor:</label>
-                            {{ livro_form.autor }}
+                        
+                        <div class="autor-ano">
+                            <div class="autor">
+                                <label for="{{ livro_form.autor.id_for_label }}">Autor:</label>
+                                {{ livro_form.autor }}
+                            </div>
+                            
+                            <div class="ano">
+                                <label for="{{ livro_form.ano.id_for_label }}">Ano:</label>
+                                {{ livro_form.ano }}
+                            </div>
                         </div>
-                        <div>
-                            <label for="{{ livro_form.ano.id_for_label }}">Ano:</label>
-                            {{ livro_form.ano }}
-                        </div>
+                    
                         <div>
                             <label for="{{ livro_form.categoria.id_for_label }}">Categoria:</label>
                             {{ livro_form.categoria }}
                         </div>
+                    
                         <div>
                             <label for="{{ livro_form.colecao.id_for_label }}">Coleção:</label>
                             {{ livro_form.colecao }}
                         </div>
+                        
+                        <div>
+                            <label for="{{ livro_form.imagem.id_for_label }}">Imagem:</label>
+                            {{ livro_form.imagem }}
+                        </div>
+                        
                         <button name="salvar_livro" type="submit"><u>ADICIONAR</u></button>
                     </form>
+                    
                     
                 </div>
             </div>
@@ -267,8 +280,11 @@
         <section>
             {% for livro in livros %}
             <div class="livro-exemple">
-                <img src="https://m.media-amazon.com/images/I/41897yAI4LL._SY445_SX342_DpWeblab_.jpg"
-                    alt="Harry Potter e a Pedra Filosofal" width="100">
+                {% if livro.imagem %}
+                    <img src="{{ livro.imagem.url }}" alt="{{ livro.nome }}" style="max-width: 100px;">
+                {% else %}
+                    Sem imagem
+                {% endif %}
                 <span>{{ livro.nome }}</span>
                 <i>{{ livro.autor.nome }}</i>
             </div>

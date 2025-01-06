@@ -28,7 +28,7 @@ def index(request):
                 return redirect('index')
 
         elif 'salvar_livro' in request.POST:
-            livro_form = LivroForm(request.POST)
+            livro_form = LivroForm(request.POST, request.FILES)
             if livro_form.is_valid():
                 livro_form.save()
                 return redirect('index')

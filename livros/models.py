@@ -8,6 +8,7 @@ class Livro(models.Model):
     ano = models.PositiveIntegerField()
     categoria = models.ForeignKey('Categoria', on_delete=models.CASCADE)
     colecao = models.ForeignKey('Colecao', on_delete=models.SET_NULL, null=True, blank=True)
+    imagem = models.ImageField(upload_to='livros/', null=True, blank=True)
     data_criacao = models.DateTimeField(auto_now_add=True)
     data_atualizacao = models.DateTimeField(auto_now=True)
 

@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from livros.forms import AutorForm, CategoriaForm, ColecaoForm, LivroForm
 from livros.models import Autor, Categoria, Colecao, Livro
 
@@ -38,6 +38,18 @@ def categorias(request):
         'categoria_form': categoria_form,
         'categorias': categorias,
     })
+
+def editar_categoria(request, id):
+    categoria = get_object_or_404(Categoria, id=id)
+    if request.method == 'POST':
+        form = CategoriaForm(request.POST, instance=categoria)
+        if form.is_valid():
+            form.save()
+            return redirect('categorias') 
+    else:
+        form = CategoriaForm(instance=categoria)
+
+    return render(request, 'editar_categoria.html', {'form': form, 'categoria': categoria})
 
 def colecoes(request):
     

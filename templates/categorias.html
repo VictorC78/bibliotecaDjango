@@ -108,8 +108,10 @@
             <hr>
             <span>{{categoria.descricao}}</span>
             
-            <div class="main-icons" style="color: #5a4d3e">
-                <i  class="bi bi-pencil-square"></i> 
+            <div class="main-icons">
+                <a style="color: #5a4d3e;" href="{% url 'editar_categoria' categoria.id %}">
+                    <i style="color: #5a4d3e;" class="bi bi-pencil-square"></i> 
+                </a>
                 <i  class="bi bi-trash3-fill"></i>
             </div>
             {% endfor %}

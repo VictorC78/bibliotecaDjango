@@ -38,11 +38,11 @@
                     <aside>
                         <button style="margin-left: 40px; margin-top: 20px;" type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         <ul class="lista-lateral">
-                            <li>BIBLIOTECA</li>
-                            <li style="margin-left:15px; font-weight: 400" data-bs-toggle="modal" data-bs-target="#exampleModal">NOVO LIVRO+</li>
-            <li style="margin-left:15px; font-weight: 400" data-bs-toggle="modal" data-bs-target="#exampleModal2">NOVA COLEÇÃO+</li>
-            <li style="margin-left:15px; font-weight: 400" data-bs-toggle="modal" data-bs-target="#exampleModal3">NOVO AUTOR+</li>
-            <li style="margin-left:15px; font-weight: 400" data-bs-toggle="modal" data-bs-target="#exampleModal4">NOVA CATEGORIA+</li>
+                            <li style="margin-left:15px; font-weight: 400"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'index' %}">LIVROS</a></li>
+                            
+                            <li style="margin-left:15px; font-weight: 400"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'autores' %}">AUTORES</a></li>
+                            <li style="margin-left:15px; font-weight: 400"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'colecoes' %}">COLEÇÕES</a></li>
+            <li style="margin-left:15px; font-weight: 400"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'categorias' %}">CATEGORIAS</a></li>
                         </ul>
                     </aside>
                 </div>
@@ -52,11 +52,11 @@
 
     <aside class="aside2">
         <ul class="lista-lateral">
-            <li>BIBLIOTECA</li>
-            <li style="margin-left:15px; font-weight: 400" data-bs-toggle="modal" data-bs-target="#exampleModal">NOVO LIVRO+</li>
-            <li style="margin-left:15px; font-weight: 400" data-bs-toggle="modal" data-bs-target="#exampleModal2">NOVA COLEÇÃO+</li>
-            <li style="margin-left:15px; font-weight: 400" data-bs-toggle="modal" data-bs-target="#exampleModal3">NOVO AUTOR+</li>
-            <li style="margin-left:15px; font-weight: 400" data-bs-toggle="modal" data-bs-target="#exampleModal4">NOVA CATEGORIA+</li>
+            <li style="margin-left:15px; font-weight: 400"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'index' %}">LIVROS</a></li>
+                            
+            <li style="margin-left:15px; font-weight: 400"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'autores' %}">AUTORES</a></li>
+            <li style="margin-left:15px; font-weight: 400"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'colecoes' %}">COLEÇÕES</a></li>
+            <li style="margin-left:15px; font-weight: 400"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'categorias' %}">CATEGORIAS</a></li>
         </ul>
     </aside>
 
@@ -130,103 +130,6 @@
         </div>
     </div>
 
-    <!-- Modal Nova colecao -->
-    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content"
-                style="background: url('{% static 'images/card_modal.png' %}') no-repeat center center !important; background-size: 80% auto !important; height: 700px; border: 0; padding: 100px;">
-                <div class="modal-body">
-                    <div style="display: flex; align-items: end; justify-content: flex-end; width: 105%;">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <br>
-                    <h4 style="font-family: MedievalSharp, cursive;
-                    font-weight: bold;
-                    font-style: normal;
-                    color: #5a4d3e;">NOVA COLEÇÃO+</h4>
-                    <br>
-                    <form method="post" class="form-addlivro">
-                        {% csrf_token %}
-                        <label for="{{ colecao_form.nome.id_for_label }}">Nome da Coleção:</label>
-                        {{ colecao_form.nome }}
-                        <label for="{{ colecao_form.descricao.id_for_label }}">Descrição da Coleção:</label>
-                        {{ colecao_form.descricao }}
-                        
-                        <br>
-                        <button name="salvar_colecao" type="submit"><u>ADICIONAR</u></button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-<!-- Modal novo autor -->
-    <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content"
-                style="background: url('{% static 'images/card_modal.png' %}') no-repeat center center !important; background-size: 80% auto !important; height: 700px; border: 0; padding: 100px;">
-                <div class="modal-body">
-                    <div style="display: flex; align-items: end; justify-content: flex-end; width: 105%;">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <br>
-                    <h4 style="font-family: MedievalSharp, cursive;
-                    font-weight: bold;
-                    font-style: normal;
-                    color: #5a4d3e;">NOVO AUTOR+</h4>
-                    <br>
-                    <form class="form-addlivro" method="post">
-                        {% csrf_token %}
-                        <label for="{{ autor_form.nome.id_for_label }}">Nome do Autor:</label>
-                        {{ autor_form.nome }}
-                        
-                        <label for="{{ autor_form.biografia.id_for_label }}">Biografia:</label>
-                        {{ autor_form.biografia }}
-                        
-                        <label for="{{ autor_form.aniversario.id_for_label }}">Data de Aniversário:</label>
-                        {{ autor_form.aniversario }}
-                        
-                        <label for="{{ autor_form.nacionalidade.id_for_label }}">Nacionalidade:</label>
-                        {{ autor_form.nacionalidade }}
-                        
-                        <button name="salvar_autor" type="submit"><u>ADICIONAR</u></button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal nova categoria -->
-    <div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content"
-                style="background: url('{% static 'images/card_modal.png' %}') no-repeat center center !important; background-size: 80% auto !important; height: 700px; border: 0; padding: 100px;">
-                <div class="modal-body">
-                    <div style="display: flex; align-items: end; justify-content: flex-end; width: 105%;">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <br>
-                    <h4 style="font-family: MedievalSharp, cursive;
-                    font-weight: bold;
-                    font-style: normal;
-                    color: #5a4d3e;">NOVA CATEGORIA+</h4>
-                    <br>
-                    <form class="form-addlivro" method="post">
-                        {% csrf_token %}
-                        <label for="id_nome">Nome da Categoria:</label>
-                        {{ categoria_form.nome }}
-                    
-                        <label for="id_descricao">Descrição:</label>
-                        {{ categoria_form.descricao }}
-                        
-                        
-                        <button name="salvar_categoria" type="submit"><u>ADICIONAR</u></button>
-                    </form>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
 
     <main>
         <search>
@@ -255,6 +158,8 @@
                 </select>
             </div>
         </search>
+
+        <button class="button-add" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">NOVO LIVRO+</button>
 
         <br><br>
         <div class="main-letras">

@@ -24,6 +24,9 @@ from livros import views
 urlpatterns = [
     path('admin/', admin.site.urls),
      path('', views.index, name='index'),  # A URL raiz
+     path('categorias/', views.categorias, name='categorias'),
+     path('colecoes/', views.colecoes, name='colecoes'),
+     path('autores/', views.autores, name='autores'),
 ]
 
 if settings.DEBUG:  # Apenas para o modo de desenvolvimento

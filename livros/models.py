@@ -4,10 +4,10 @@ from django.db import models
 
 class Livro(models.Model):
     nome = models.CharField(max_length=255)
-    autor = models.ForeignKey('Autor', on_delete=models.CASCADE)
+    autor = models.ForeignKey('Autor', on_delete=models.CASCADE, related_name="livros")
     ano = models.PositiveIntegerField()
     categoria = models.ForeignKey('Categoria', on_delete=models.CASCADE)
-    colecao = models.ForeignKey('Colecao', on_delete=models.SET_NULL, null=True, blank=True)
+    colecao = models.ForeignKey('Colecao', on_delete=models.SET_NULL, null=True, blank=True, related_name="livros")
     imagem = models.ImageField(upload_to='livros/', null=True, blank=True)
     data_criacao = models.DateTimeField(auto_now_add=True)
     data_atualizacao = models.DateTimeField(auto_now=True)

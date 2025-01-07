@@ -26,6 +26,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('categorias/', views.categorias, name='categorias'),
     path('categorias/editar/<int:id>/', views.editar_categoria, name='editar_categoria'),
+    path('deletar_categoria/<int:pk>/', views.deletar_categoria, name='deletar_categoria'),
     path('colecoes/', views.colecoes, name='colecoes'),
     path('autores/', views.autores, name='autores'),
 ]

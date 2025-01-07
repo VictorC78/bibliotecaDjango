@@ -51,6 +51,16 @@ def editar_categoria(request, id):
 
     return render(request, 'editar_categoria.html', {'form': form, 'categoria': categoria})
 
+def deletar_categoria(request, pk):
+    categoria = get_object_or_404(Categoria, pk=pk)
+
+    if request.method == "POST":
+        if 'confirmar' in request.POST:
+            categoria.delete()
+            return redirect('categorias') 
+
+    return render(request, 'deletar_categoria.html', {'categoria': categoria})
+
 def colecoes(request):
     
     colecao_form = ColecaoForm()

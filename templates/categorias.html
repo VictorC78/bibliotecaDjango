@@ -112,7 +112,9 @@
                 <a style="color: #5a4d3e;" href="{% url 'editar_categoria' categoria.id %}">
                     <i style="color: #5a4d3e;" class="bi bi-pencil-square"></i> 
                 </a>
-                <i  class="bi bi-trash3-fill"></i>
+                <a style="color: #5a4d3e;" href="{% url 'deletar_categoria' categoria.id %}">
+                    <i  class="bi bi-trash3-fill"></i>
+                </a>
             </div>
             {% endfor %}
         </div><br>

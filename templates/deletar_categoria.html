@@ -12,8 +12,15 @@
 <body >
     <div style="background: url('{% static 'images/fundo_edit.png' %}') no-repeat center center;">
             <div  style="background: url('{% static 'images/card_modal.png' %}') no-repeat center center !important; background-size: 100% auto !important; height: 420px; border: 0; padding: 75px; width:250px;" class="form-addlivro" method="post">
-                
-                <h1> {{categoria.nome}}</h1>
+                <h4>Tem certeza que deseja excluir?</h4>
+                <span> {{categoria.nome}}</span><br>
+                <form method="post">
+                    <a href="{% url 'categorias' %}"> Cancelar </a>
+                    {% csrf_token %}
+                    <button name="confirmar" type="submit">
+                        Confirmar
+                    </button>
+                </form>
                 
             </div>
     </div>

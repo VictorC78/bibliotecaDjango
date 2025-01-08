@@ -79,6 +79,28 @@ def colecoes(request):
         'colecoes': colecoes,
     })
     
+def editar_colecao(request, id):
+    colecao = get_object_or_404(Colecao, id=id)
+    if request.method == 'POST':
+        form = ColecaoForm(request.POST, instance=colecao)
+        if form.is_valid():
+            form.save()
+            return redirect('colecoes') 
+    else:
+        form = ColecaoForm(instance=colecao)
+
+    return render(request, 'editar_colecao.html', {'form': form, 'colecao': colecao})
+
+def deletar_colecao(request, pk):
+    colecao = get_object_or_404(Colecao, pk=pk)
+
+    if request.method == "POST":
+        if 'confirmar' in request.POST:
+            colecao.delete()
+            return redirect('colecoes') 
+
+    return render(request, 'deletar_colecao.html', {'colecao': colecao})
+    
 def autores(request):
     autor_form = AutorForm()
     

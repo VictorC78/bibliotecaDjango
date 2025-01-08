@@ -28,6 +28,8 @@ urlpatterns = [
     path('categorias/editar/<int:id>/', views.editar_categoria, name='editar_categoria'),
     path('deletar_categoria/<int:pk>/', views.deletar_categoria, name='deletar_categoria'),
     path('colecoes/', views.colecoes, name='colecoes'),
+    path('colecoes/editar/<int:id>/', views.editar_colecao, name='editar_colecao'),
+    path('deletar_colecao/<int:pk>/', views.deletar_colecao, name='deletar_colecao'),
     path('autores/', views.autores, name='autores'),
 ]
 

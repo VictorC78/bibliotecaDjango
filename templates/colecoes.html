@@ -100,9 +100,19 @@
         
 
         <div class="main-categorias">
-            {% for colecao in colecoes %}  
-            <h4>{{colecao.nome}}</h4>
-            <hr>
+            {% for colecao in colecoes %}
+            <div style="display:flex; justify-content: space-between; align-items:center; margin-top: 20px">   
+                <h4>{{colecao.nome}}</h4>
+                <div class="main-icons">
+                    <a style="color: #5a4d3e;" href="{% url 'editar_colecao' colecao.id %}">
+                        <i style="color: #5a4d3e;" class="bi bi-pencil-square"></i> 
+                    </a>
+                    <a style="color: #5a4d3e;" href="{% url 'deletar_colecao' colecao.id %}">
+                        <i  class="bi bi-trash3-fill"></i>
+                    </a>
+                </div>
+            </div>
+            <hr style="margin-top: -7px">
             <span>{{colecao.descricao}}</span> <br><br>
             <strong>Livros:</strong><br>
             {% for livro in colecao.livros.all %}
@@ -110,10 +120,7 @@
             {% empty %}
                 <span>Nenhum livro nesta coleção.</span>
             {% endfor %}
-            <div class="main-icons" style="color: #5a4d3e">
-                <i  class="bi bi-pencil-square"></i> 
-                <i  class="bi bi-trash3-fill"></i>
-            </div>
+            
             {% endfor %}
         </div><br>
         

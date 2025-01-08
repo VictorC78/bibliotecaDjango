@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+
+    <title>Editar Categoria</title>
+    <!-- Adicione o CSS aqui, ou você pode usar um arquivo CSS externo -->
+    <link rel="stylesheet" href="{% static 'css/editar_colecao.css' %}">
+</head>
+<body >
+    <div style="background: url('{% static 'images/fundo_edit.png' %}') no-repeat center center;">
+            <form  style="background: url('{% static 'images/card_modal.png' %}') no-repeat center center !important; background-size: 100% auto !important; height: 420px; border: 0; padding: 75px; width:250px;" class="form-addlivro" method="post">
+                <h4 style="font-family: MedievalSharp, cursive; font-weight: bold; font-style: normal; color: #5a4d3e;">EDITAR COLEÇÃO</h4>
+                {% csrf_token %}
+                <label for="id_nome">Nome da Categoria:</label>
+                {{ form.nome }}
+                
+                <label for="id_descricao">Descrição:</label>
+                {{ form.descricao }}
+
+                <br><br>
+                <button name="salvar_colecao" type="submit"><u>Salvar Alterações</u></button>
+                
+            </form>
+    </div>
+    
+</body>
+</html>

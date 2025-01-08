@@ -1,0 +1,123 @@
+
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
+
+html, body{
+    height: 100%;
+    margin: 0;
+}
+
+div{
+    display: flex ;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.255);
+    background-size:cover;  
+    background-attachment: fixed;
+    width: 100%;
+    height: 100%;
+    
+}
+
+
+
+
+.form-addlivro label {
+    display: block;
+    font-weight: 400;
+    font-family: "EB Garamond", serif;
+  font-optical-sizing: auto;
+  margin-bottom: 8px; 
+    
+}
+
+.form-addlivro input[type="text"],
+.form-addlivro select, 
+.form-addlivro input[type="date"],
+.form-addlivro input[type="number"]
+ {
+    width: 100%;                      
+    border: none;                    
+    border-bottom: 1px solid #131313;    
+    font-size: 14px;
+    background: transparent;
+    outline: none;     
+    font-family: "EB Garamond", serif;
+  font-optical-sizing: auto;  
+  margin-bottom: 12px;          
+}
+
+.form-addlivro input[type="text"]:focus,
+.form-addlivro select:focus, 
+.form-addlivro input[type="date"]:focus,
+.form-addlivro input[type="number"]:focus
+{
+    border-bottom: 1px solid #151515; 
+}
+
+.form-addlivro button {
+    background-color: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+    color: #5a4d3e;
+    font-weight: BOLD;
+    font-size: larger;
+    text-align: end;
+    font-family: "EB Garamond", serif;
+  font-optical-sizing: auto;
+  margin-bottom: 12px; 
+}
+
+/* Container para os campos Autor e Ano */
+/* Agrupando Autor e Ano ao lado um do outro */
+.autor-ano {
+    display: flex;
+    justify-content: space-between;
+}
+
+.autor, .ano {
+    width: 48%; /* Controlando a largura para caber lado a lado */
+}
+
+/* Agrupando Categoria e Coleção ao lado um do outro */
+.categoria-colecao {
+    display: flex;
+    justify-content: space-between;
+}
+
+.categoria, .colecao {
+    width: 48%; /* Controlando a largura para caber lado a lado */
+}
+
+
+.custom-file-input {
+    display: none; /* Esconde o campo de arquivo real */
+}
+
+.custom-file-button {
+    width: 70%;
+    background-color: transparent;
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    border: 1px solid black;
+    transition: 300ms;
+    
+}
+
+.custom-file-button:hover {
+    background-color:#5a4d3e;
+    transition: 300ms;
+}
+
+
+/* Mostrar o nome da imagem selecionada */
+.file-name {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #555;
+}

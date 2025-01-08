@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
+
 html, body{
     height: 100%;
     margin: auto
@@ -9,8 +12,6 @@ body{
     
 }
 
-@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
 
 aside{
     width: 235px;
@@ -164,8 +165,8 @@ main{
 .main-actions h2{
     color: #5a4d3e;
     font-family: "MedievalSharp", cursive;
-    font-weight: 600;
-    font-style: normal;
+  font-weight: 600;
+  font-style: normal;
 }
 
 .main-actions button{

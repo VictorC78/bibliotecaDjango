@@ -32,7 +32,7 @@ def categorias(request):
                 categoria_form.save()
                 return redirect('categorias')
             
-    categorias = Categoria.objects.all()
+    categorias = Categoria.objects.all().order_by("nome")
     
     return render(request, 'categorias.html', {
         'categoria_form': categoria_form,

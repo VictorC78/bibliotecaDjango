@@ -102,8 +102,9 @@
 
         <div class="main-categorias">
             {% for categoria in categorias %}
+            
              
-            <div style="display:flex; justify-content: space-between; align-items:center">   
+            <div style="display:flex; justify-content: space-between; align-items:center; margin-top: 20px">   
                 <h4>{{categoria.nome}}</h4>
                 <div class="main-icons">
                     <a style="color: #5a4d3e;" href="{% url 'editar_categoria' categoria.id %}">
@@ -114,7 +115,7 @@
                     </a>
                 </div>
             </div>
-            <hr>
+            <hr style="margin-top: -7px">
             <span>{{categoria.descricao}}</span>
             {% endfor %}
         </div><br>

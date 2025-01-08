@@ -72,7 +72,7 @@ def colecoes(request):
                 colecao_form.save()
                 return redirect('colecoes')
             
-    colecoes = Colecao.objects.prefetch_related('livros').all()
+    colecoes = Colecao.objects.prefetch_related('livros').all().order_by("nome")
     
     return render(request, 'colecoes.html', {
         'colecao_form': colecao_form,
@@ -118,3 +118,25 @@ def autores(request):
         'autor_form': autor_form,
         'autores': autores,
     })
+    
+def editar_autor(request, id):
+    autor = get_object_or_404(Autor, id=id)
+    if request.method == 'POST':
+        form = AutorForm(request.POST, instance=autor)
+        if form.is_valid():
+            form.save()
+            return redirect('autores') 
+    else:
+        form = AutorForm(instance=autor)
+
+    return render(request, 'editar_autor.html', {'form': form, 'autor': autor})
+
+def deletar_autor(request, pk):
+    autor = get_object_or_404(Autor, pk=pk)
+
+    if request.method == "POST":
+        if 'confirmar' in request.POST:
+            autor.delete()
+            return redirect('autores') 
+
+    return render(request, 'deletar_autor.html', {'autor': autor})

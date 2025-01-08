@@ -31,6 +31,8 @@ urlpatterns = [
     path('colecoes/editar/<int:id>/', views.editar_colecao, name='editar_colecao'),
     path('deletar_colecao/<int:pk>/', views.deletar_colecao, name='deletar_colecao'),
     path('autores/', views.autores, name='autores'),
+    path('autores/editar/<int:id>/', views.editar_autor, name='editar_autor'),
+    path('deletar_autor/<int:pk>/', views.deletar_autor, name='deletar_autor'),
 ]
 
 if settings.DEBUG:  # Apenas para o modo de desenvolvimento

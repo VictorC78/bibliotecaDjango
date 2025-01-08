@@ -6,6 +6,7 @@ class Livro(models.Model):
     nome = models.CharField(max_length=255)
     autor = models.ForeignKey('Autor', on_delete=models.CASCADE, related_name="livros")
     ano = models.PositiveIntegerField()
+    sinopse = models.TextField(blank=True, null=True, verbose_name="Sinopse:")
     categoria = models.ForeignKey('Categoria', on_delete=models.CASCADE)
     colecao = models.ForeignKey('Colecao', on_delete=models.SET_NULL, null=True, blank=True, related_name="livros")
     imagem = models.ImageField(upload_to='livros/', null=True, blank=True)

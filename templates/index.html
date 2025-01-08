@@ -81,6 +81,10 @@
                             <label for="{{ livro_form.nome.id_for_label }}">Nome:</label>
                             {{ livro_form.nome }}
                         </div>
+                        <div>
+                            <label for="{{ livro_form.sinopse.id_for_label }}">Sinopse:</label>
+                            {{ livro_form.sinopse }}
+                        </div>
                         
                         <div class="autor-ano">
                             <div class="autor">
@@ -197,15 +201,17 @@
         <br>
         <section>
             {% for livro in livros %}
-            <div class="livro-exemple">
-                {% if livro.imagem %}
-                    <img src="{{ livro.imagem.url }}" alt="{{ livro.nome }}" style="max-width: 100px;">
-                {% else %}
-                    Sem imagem
-                {% endif %}
-                <span>{{ livro.nome }}</span>
-                <i>{{ livro.autor.nome }}</i>
-            </div>
+            <a style="text-decoration:none" href="{% url 'ver_livro' livro.id %}">
+                <div class="livro-exemple">
+                    {% if livro.imagem %}
+                        <img src="{{ livro.imagem.url }}" alt="{{ livro.nome }}" style="max-width: 100px;">
+                    {% else %}
+                        Sem imagem
+                    {% endif %}
+                    <span>{{ livro.nome }}</span>
+                    <i>{{ livro.autor.nome }}</i>
+                </div>
+            <a/>
             {% endfor %}
 
            

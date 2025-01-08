@@ -21,6 +21,21 @@ def index(request):
         'livro_form': livro_form,
         'livros': livros,
     })
+    
+    
+def ver_livro(request, id):
+    
+    livro = get_object_or_404(Livro, id= id)
+    
+    livros_relacionados = Livro.objects.filter(
+        colecao=livro.colecao,
+        categoria=livro.categoria
+    ).exclude(id=livro.id)
+
+    return render(request, 'ver_livro.html', {
+        'livro': livro,
+        'livros_relacionados': livros_relacionados
+    })
 
 def categorias(request):
     categoria_form = CategoriaForm()

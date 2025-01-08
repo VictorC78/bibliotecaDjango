@@ -53,6 +53,7 @@
     </aside>
 
 
+<article>
     <main>
 
         <img src="{{livro.imagem.url}}" alt="{{livro.nome}}">
@@ -67,9 +68,29 @@
                 <span><strong>Coleção: </strong>{{livro.colecao.nome}}</span>
             </section>
         </div>
-    
     </main>
-    <br>
+    
+    <footer>
+    <h4>Outros títulos que talvez você se interesse</h4>
+    <search>
+        {% for livro in livros_relacionados %}
+            <a style="text-decoration:none" href="{% url 'ver_livro' livro.id %}">
+                <div class="livro-exemple">
+                    {% if livro.imagem %}
+                        <img src="{{ livro.imagem.url }}" alt="{{ livro.nome }}" style="max-width: 100px;">
+                    {% else %}
+                        Sem imagem
+                    {% endif %}
+                    <span>{{ livro.nome }}</span>
+                    <i>{{ livro.autor.nome }}</i>
+                </div>
+            <a/>
+            {% endfor %}
+    </search>
+</footer>
+
+</article>
+
     
 </body>
 </html>

@@ -47,10 +47,13 @@ aside{
     text-decoration: none;
     color: #5a4d3e;
 }
+
+article{
+    margin-left: 250px;
+}
 main{
    
     width: 100%;
-    margin-left: 250px;
     padding: 20px;
     font-family: "EB Garamond", serif;
   font-optical-sizing: auto;
@@ -77,6 +80,26 @@ main div section{
     gap: 15px;
     flex-wrap: wrap;
     margin-top: 20px;
+}
+
+footer{
+    width: 100%;
+    padding: 20px;
+    font-family: "EB Garamond", serif;
+  font-optical-sizing: auto;
+  margin-top: 20px;
+}
+
+footer h4{
+    color: #5a4d3e;
+}
+
+footer search{
+    display: flex;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    gap: 20px;
+
 }
 
 
@@ -116,7 +139,7 @@ main div section{
 
     }
 
-    main{
+    article{
         margin-left: 0;
     }
 }
@@ -147,6 +170,14 @@ main div section{
     }
 
     main div span{
+        text-align: center;
+    }
+    main div section{
+        justify-content: center;
+        align-items: center;
+    }
+
+    footer h4{
         text-align: center;
     }
     

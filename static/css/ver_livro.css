@@ -82,6 +82,11 @@ main div section{
     margin-top: 20px;
 }
 
+.main-icons{
+    display: flex;
+    gap: 5px;
+}
+
 footer{
     width: 100%;
     padding: 20px;

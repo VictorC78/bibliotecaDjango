@@ -1,6 +1,10 @@
 from django.db import models
+from pydantic import ValidationError
 
 # Create your models here.
+
+# Tema do projeto: Biblioteca
+# # Dev: Álvaro Victor Carlos Parente - IFSalgueiro
 
 class Livro(models.Model):
     nome = models.CharField(max_length=255)
@@ -12,6 +16,11 @@ class Livro(models.Model):
     imagem = models.ImageField(upload_to='livros/', null=True, blank=True)
     data_criacao = models.DateTimeField(auto_now_add=True)
     data_atualizacao = models.DateTimeField(auto_now=True)
+    
+    def clean(self):
+        super().clean()
+        if self.ano > 2025:
+            raise ValidationError({f'ano': "O ano não pode ser maior que 2025."})
 
     def __str__(self):
         return self.nome
@@ -32,6 +41,11 @@ class Autor(models.Model):
     nacionalidade = models.CharField(max_length=100, verbose_name="Nacionalidade:")
     data_criacao = models.DateTimeField(auto_now_add=True, verbose_name="Data de Criação:")
     data_atualizacao = models.DateTimeField(auto_now=True, verbose_name="Data de Atualização:")
+    
+    def clean(self):
+        super().clean()
+        if self.aniversario.year >= 2022:
+            raise ValidationError({f'aniversario': "O ano de nasicmento não pode ser maior que 2021."})
 
     def __str__(self):
         return self.nome
@@ -44,4 +58,5 @@ class Colecao(models.Model):
 
     def __str__(self):
         return self.nome
-
+    
+    

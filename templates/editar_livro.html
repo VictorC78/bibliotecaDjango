@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+
+    <title>Editar Livro</title>
+    <!-- Adicione o CSS aqui, ou você pode usar um arquivo CSS externo -->
+    <link rel="stylesheet" href="{% static 'css/editar_livro.css' %}">
+</head>
+<body >
+    <div style="background: url('{% static 'images/fundo_edit.png' %}') no-repeat center center;">
+            <form  style="background: url('{% static 'images/card_modal.png' %}') no-repeat center center !important; background-size: 100% auto !important; height: 420px; border: 0; padding: 75px; width:250px;" class="form-addlivro" method="post" enctype="multipart/form-data">
+                <h4 style="font-family: MedievalSharp, cursive; font-weight: bold; font-style: normal; color: #5a4d3e;">EDITAR LIVRO</h4>
+                {% csrf_token %}
+                <label for="id_nome">Nome da Livro:</label>
+                {{ form.nome }}
+                
+                <label for="id_sinopse">Sinopse:</label>
+                {{ form.sinopse }}
+                <div class="autor-ano">
+                    <div class="autor">
+                        <label for="{{ form.autor.id_for_label }}">Autor:</label>
+                        {{ form.autor }}
+                    </div>
+                    
+                    <div class="ano">
+                        <label for="{{ form.ano.id_for_label }}">Ano:</label>
+                        {{ form.ano }}
+                    </div>
+                </div>
+            
+                <div class="categoria-colecao">
+                    <div class="categoria">
+                        <label for="{{ form.categoria.id_for_label }}">Categoria:</label>
+                        {{ form.categoria }}
+                    </div>
+                    
+                    <div class="colecao">
+                        <label for="{{ form.colecao.id_for_label }}">Coleção:</label>
+                        {{ form.colecao }}
+                    </div>
+                </div>
+                
+                <div style="height:50px; background-color: transparent" class="imagem-upload">
+                    <input type="file" id="id_imagem" name="imagem" class="custom-file-input" accept="image/*">
+                    <label class="custom-file-button" for="id_imagem">Escolher Imagem</label>
+                    <span class="file-name" id="file-name"></span>
+                </div>
+
+                <button name="salvar_livro" type="submit"><u>Salvar Alterações</u></button>
+                
+            </form>
+            <script>
+                document.getElementById("id_imagem").addEventListener("change", function (event) {
+                    const fileName = event.target.files[0] ? event.target.files[0].name : "Nenhuma imagem selecionada";
+                    document.querySelector(".file-name").textContent = fileName;
+                });
+
+                
+                
+            </script>
+    </div>
+    
+</body>
+</html>

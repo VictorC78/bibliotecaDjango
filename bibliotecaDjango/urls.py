@@ -25,6 +25,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('livro/<int:id>', views.ver_livro, name='ver_livro'),
+    path('livros/editar/<int:id>/', views.editar_livro, name='editar_livro'),
+    path('deletar_livro/<int:pk>/', views.deletar_livro, name='deletar_livro'),
     path('categorias/', views.categorias, name='categorias'),
     path('categorias/editar/<int:id>/', views.editar_categoria, name='editar_categoria'),
     path('deletar_categoria/<int:pk>/', views.deletar_categoria, name='deletar_categoria'),

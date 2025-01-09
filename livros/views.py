@@ -37,6 +37,29 @@ def ver_livro(request, id):
         'livros_relacionados': livros_relacionados
     })
 
+def editar_livro(request, id):
+    livro = get_object_or_404(Livro, id=id)
+    if request.method == 'POST':
+        form = LivroForm(request.POST, request.FILES, instance=livro)
+        if form.is_valid():
+            form.save()
+            return redirect('ver_livro', id= livro.id)
+        
+    else:
+        form = LivroForm(instance=livro)
+
+    return render(request, 'editar_livro.html', {'form': form, 'livro': livro})
+
+def deletar_livro(request, pk):
+    livro = get_object_or_404(Livro, pk=pk)
+
+    if request.method == "POST":
+        if 'confirmar' in request.POST:
+            livro.delete()
+            return redirect('index') 
+
+    return render(request, 'deletar_livro.html', {'livro': livro})
+
 def categorias(request):
     categoria_form = CategoriaForm()
     

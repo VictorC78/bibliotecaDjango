@@ -55,7 +55,11 @@
 <article>
     <main>
 
-        <img src="{{livro.imagem.url}}" alt="{{livro.nome}}">
+        {% if livro.imagem %}
+                        <img src="{{ livro.imagem.url }}" alt="{{ livro.nome }}">
+                    {% else %}
+                        Sem imagem
+                    {% endif %}
         <div>
             <actions style=" margin-top: 20px;">   
                 <h4>{{livro.nome}}</h4>

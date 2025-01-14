@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from livros.forms import AutorForm, CategoriaForm, ColecaoForm, LivroForm
 from livros.models import Autor, Categoria, Colecao, Livro
 
-def index(request):
+def index(request, letra=None):
 
     
     livro_form = LivroForm()
@@ -11,6 +11,12 @@ def index(request):
     colecoes = Colecao.objects.all().order_by("nome")
     autores = Autor.objects.all().order_by("nome")
 
+    if letra is None or letra == 'TODOS':
+        livros = Livro.objects.all()  
+    elif letra == '123':
+        livros = Livro.objects.filter(nome__regex=r'^\d')  
+    else:
+        livros = Livro.objects.filter(nome__istartswith=letra) 
 
     colecao_pesquisa = request.GET.get('colecao_pesquisa')  
     autor_pesquisa = request.GET.get('autor_pesquisa')     
@@ -32,15 +38,14 @@ def index(request):
                 livro_form.save()
                 return redirect('index')
 
-    print(livros)
-    print(texto_pesquisa)
 
     return render(request, 'index.html', {
         
         'livro_form': livro_form,
         'livros': livros,
         'colecoes' : colecoes,
-        'autores' : autores
+        'autores' : autores,
+        'letra': letra,
     })
     
     

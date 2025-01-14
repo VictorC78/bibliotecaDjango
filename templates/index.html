@@ -179,36 +179,44 @@
 
         <br><br>
         <div class="main-letras">
-            <a href="">123</a>
-            <a href="">A</a>
-            <a href="">B</a>
-            <a href="">C</a>
-            <a href="">D</a>
-            <a href="">E</a>
-            <a href="">F</a>
-            <a href="">G</a>
-            <a href="">H</a>
-            <a href="">I</a>
-            <a href="">J</a>
-            <a href="">K</a>
-            <a href="">L</a>
-            <a href="">M</a>
-            <a href="">N</a>
-            <a href="">O</a>
-            <a href="">P</a>
-            <a href="">Q</a>
-            <a href="">R</a>
-            <a href="">S</a>
-            <a href="">T</a>
-            <a href="">U</a>
-            <a href="">V</a>
-            <a href="">W</a>
-            <a href="">X</a>
-            <a href="">Y</a>
-            <a href="">Z</a>
+            <a href="{% url 'index_com_letra' 'TODOS' %}" class="{% if letra == 'TODOS' %}selected{% endif %}">TODOS</a>
+    <a href="{% url 'index_com_letra' '123' %}" class="{% if letra == '123' %}selected{% endif %}">123</a>
+    <a href="{% url 'index_com_letra' 'A' %}" class="{% if letra == 'A' %}selected{% endif %}">A</a>
+    <a href="{% url 'index_com_letra' 'B' %}" class="{% if letra == 'B' %}selected{% endif %}">B</a>
+    <a href="{% url 'index_com_letra' 'C' %}" class="{% if letra == 'C' %}selected{% endif %}">C</a>
+    <a href="{% url 'index_com_letra' 'D' %}" class="{% if letra == 'D' %}selected{% endif %}">D</a>
+    <a href="{% url 'index_com_letra' 'E' %}" class="{% if letra == 'E' %}selected{% endif %}">E</a>
+    <a href="{% url 'index_com_letra' 'F' %}" class="{% if letra == 'F' %}selected{% endif %}">F</a>
+    <a href="{% url 'index_com_letra' 'G' %}" class="{% if letra == 'G' %}selected{% endif %}">G</a>
+    <a href="{% url 'index_com_letra' 'H' %}" class="{% if letra == 'H' %}selected{% endif %}">H</a>
+    <a href="{% url 'index_com_letra' 'I' %}" class="{% if letra == 'I' %}selected{% endif %}">I</a>
+    <a href="{% url 'index_com_letra' 'J' %}" class="{% if letra == 'J' %}selected{% endif %}">J</a>
+    <a href="{% url 'index_com_letra' 'K' %}" class="{% if letra == 'K' %}selected{% endif %}">K</a>
+    <a href="{% url 'index_com_letra' 'L' %}" class="{% if letra == 'L' %}selected{% endif %}">L</a>
+    <a href="{% url 'index_com_letra' 'M' %}" class="{% if letra == 'M' %}selected{% endif %}">M</a>
+    <a href="{% url 'index_com_letra' 'N' %}" class="{% if letra == 'N' %}selected{% endif %}">N</a>
+    <a href="{% url 'index_com_letra' 'O' %}" class="{% if letra == 'O' %}selected{% endif %}">O</a>
+    <a href="{% url 'index_com_letra' 'P' %}" class="{% if letra == 'P' %}selected{% endif %}">P</a>
+    <a href="{% url 'index_com_letra' 'Q' %}" class="{% if letra == 'Q' %}selected{% endif %}">Q</a>
+    <a href="{% url 'index_com_letra' 'R' %}" class="{% if letra == 'R' %}selected{% endif %}">R</a>
+    <a href="{% url 'index_com_letra' 'S' %}" class="{% if letra == 'S' %}selected{% endif %}">S</a>
+    <a href="{% url 'index_com_letra' 'T' %}" class="{% if letra == 'T' %}selected{% endif %}">T</a>
+    <a href="{% url 'index_com_letra' 'U' %}" class="{% if letra == 'U' %}selected{% endif %}">U</a>
+    <a href="{% url 'index_com_letra' 'V' %}" class="{% if letra == 'V' %}selected{% endif %}">V</a>
+    <a href="{% url 'index_com_letra' 'W' %}" class="{% if letra == 'W' %}selected{% endif %}">W</a>
+    <a href="{% url 'index_com_letra' 'X' %}" class="{% if letra == 'X' %}selected{% endif %}">X</a>
+    <a href="{% url 'index_com_letra' 'Y' %}" class="{% if letra == 'Y' %}selected{% endif %}">Y</a>
+    <a href="{% url 'index_com_letra' 'Z' %}" class="{% if letra == 'Z' %}selected{% endif %}">Z</a>
         </div>
         <br><br>
-        <span class="resultados">H</span>
+        <span class="resultados">
+            {% if letra is None %}
+                TODOS
+            {% else %}
+                {{ letra }}
+            {% endif %}
+        </span>
+        
         <hr class="hr_resultados">
         <br>
         <section>

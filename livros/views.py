@@ -1,10 +1,12 @@
+import unicodedata
 from django.shortcuts import get_object_or_404, redirect, render
 from livros.forms import AutorForm, CategoriaForm, ColecaoForm, LivroForm
 from livros.models import Autor, Categoria, Colecao, Livro
 
+
+
 def index(request, letra=None):
 
-    
     livro_form = LivroForm()
     
     livros = Livro.objects.all()
@@ -20,16 +22,17 @@ def index(request, letra=None):
 
     colecao_pesquisa = request.GET.get('colecao_pesquisa')  
     autor_pesquisa = request.GET.get('autor_pesquisa')     
-    texto_pesquisa = request.GET.get('q', '')                  
+    texto_pesquisa = request.GET.get('q', '')
 
+    if texto_pesquisa: 
+        
+        livros = livros.filter(nome__icontains=texto_pesquisa)
+        
     if colecao_pesquisa:
         livros = livros.filter(colecao=colecao_pesquisa)
 
     if autor_pesquisa:
         livros = livros.filter(autor=autor_pesquisa)
-
-    if texto_pesquisa:
-        livros = livros.filter(nome__contains = texto_pesquisa)
 
     if request.method == "POST":
         if  'salvar_livro' in request.POST:
@@ -40,13 +43,13 @@ def index(request, letra=None):
 
 
     return render(request, 'index.html', {
-        
         'livro_form': livro_form,
         'livros': livros,
         'colecoes' : colecoes,
         'autores' : autores,
         'letra': letra,
     })
+
     
     
 def ver_livro(request, id):

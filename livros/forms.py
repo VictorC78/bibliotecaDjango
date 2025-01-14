@@ -4,7 +4,7 @@ from .models import Autor, Categoria, Colecao, Livro
 class LivroForm(forms.ModelForm):
     class Meta:
         model = Livro
-        fields = ['nome', 'autor', 'ano', 'sinopse', 'categoria', 'colecao', 'imagem']  # Incluído 'imagem'
+        fields = ['nome', 'autor', 'ano', 'sinopse', 'categoria', 'colecao', 'imagem']  
         widgets = {
             'nome': forms.TextInput(attrs={'class': 'form-addlivro', 'required': 'required'}),
             'autor': forms.Select(attrs={'class': 'form-addlivro'}),

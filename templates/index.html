@@ -32,19 +32,21 @@
         <div style="background: url('') no-repeat center center !important; background-size: 100% auto !important; border: 0; margin-top: -10px !important; height: 57px;" class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
+                
             </button>
             <div style="background-color: transparent !important; border: 0; " class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                 <div style="background-color: transparent !important;" class="offcanvas-body">
                     <aside>
                         <button style="margin-left: 40px; margin-top: 20px;" type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         <ul class="lista-lateral">
-                            <li style="margin-left:15px; font-weight: 400"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'index' %}">LIVROS</a></li>
-                            
-                            <li style="margin-left:15px; font-weight: 400"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'autores' %}">AUTORES</a></li>
-                            <li style="margin-left:15px; font-weight: 400"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'colecoes' %}">COLEÇÕES</a></li>
-            <li style="margin-left:15px; font-weight: 400"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'categorias' %}">CATEGORIAS</a></li>
+                            <li style="margin-left:15px; font-weight:6400"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'index' %}">LIVROS</a></li>
+                            <li style="margin-left:25px; font-weight: 400"><a data-bs-toggle="modal" data-bs-target="#exampleModal" style="text-decoration:none; color: #5a4d3e">NOVO LIVRO+</a></li>
+                            <li style="margin-left:15px; font-weight: 600"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'autores' %}">AUTORES</a></li>
+                            <li style="margin-left:15px; font-weight: 600"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'colecoes' %}">COLEÇÕES</a></li>
+                            <li style="margin-left:15px; font-weight: 600"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'categorias' %}">CATEGORIAS</a></li>
                         </ul>
                     </aside>
+                    
                 </div>
             </div>
         </div>
@@ -52,11 +54,11 @@
 
     <aside class="aside2">
         <ul class="lista-lateral">
-            <li style="margin-left:15px; font-weight: 400"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'index' %}">LIVROS</a></li>
-                            
-            <li style="margin-left:15px; font-weight: 400"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'autores' %}">AUTORES</a></li>
-            <li style="margin-left:15px; font-weight: 400"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'colecoes' %}">COLEÇÕES</a></li>
-            <li style="margin-left:15px; font-weight: 400"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'categorias' %}">CATEGORIAS</a></li>
+            <li style="margin-left:15px; font-weight: 600"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'index' %}">LIVROS</a></li>
+            <li style="margin-left:25px; font-weight: 400"><a data-bs-toggle="modal" data-bs-target="#exampleModal" style="text-decoration:none; color: #5a4d3e">NOVO LIVRO+</a></li>
+            <li style="margin-left:15px; font-weight: 600"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'autores' %}">AUTORES</a></li>
+            <li style="margin-left:15px; font-weight: 600"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'colecoes' %}">COLEÇÕES</a></li>
+            <li style="margin-left:15px; font-weight: 600"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'categorias' %}">CATEGORIAS</a></li>
         </ul>
     </aside>
 
@@ -135,11 +137,14 @@
 
 
     <main>
-        <search>
+        
+        <form class="search-filter" method="get">
             <div class="main-pesquisa">
                 <div class="main-input-pesquisa">
-                    <i class="bi bi-search"></i>
-                    <input placeholder="Pesquise por..." type="text">
+                    <button style="border: 0; background-color: transparent;" type="submit" name="pesquisar">
+                        <i class="bi bi-search"></i>
+                    </button>                    
+                    <input placeholder="Pesquise por..." name="q" type="text" value="{{ request.GET.q }}">
                 </div>
                 <hr>
             </div>
@@ -147,22 +152,30 @@
             <div class="main-filtros">
                 <span style="color: gray;">Filtrar por:</span>
 
-                <select name="colecao-pesquisa" id="colecao" class="form-addlivro">
-                    <option disabled selected>Coleção:</option>
+                <select name="colecao_pesquisa" id="colecao" class="form-addlivro">
+                    <option disabled {% if not request.GET.colecao_pesquisa %}selected{% endif %}>Coleção:</option>
                     {% for colecao in colecoes %}
-                        <option value="{{ colecao.id }}">{{ colecao.nome }}</option>
+                        <option value="{{ colecao.id }}" {% if request.GET.colecao_pesquisa == colecao.id|stringformat:"s" %}selected{% endif %}>
+                            {{ colecao.nome }}
+                        </option>
                     {% endfor %}
                 </select>
-                <select name="autor-pesquisa" id="autor" class="form-addlivro">
-                    <option disabled selected>Autor:</option>
+                
+                <select name="autor_pesquisa" id="autor" class="form-addlivro">
+                    <option disabled {% if not request.GET.autor_pesquisa %}selected{% endif %}>Autor:</option>
                     {% for autor in autores %}
-                        <option value="{{ autor.id }}">{{ autor.nome }}</option>
+                        <option value="{{ autor.id }}" {% if request.GET.autor_pesquisa == autor.id|stringformat:"s" %}selected{% endif %}>
+                            {{ autor.nome }}
+                        </option>
                     {% endfor %}
                 </select>
-            </div>
-        </search>
 
-        <button class="button-add" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">NOVO LIVRO+</button>
+            <button style="border: 0; background-color: #5a4d3e; color: white; padding:5px" type="submit" name="pesquisar">Aplicar Filtros</button>
+                
+            </div>
+        <form>
+
+        
 
         <br><br>
         <div class="main-letras">

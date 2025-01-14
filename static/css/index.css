@@ -165,18 +165,24 @@ main{
 section{
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 40px;
 }
 
-.livro-exemple{
-    width: 130px;
+.livro-exemple {
+    width: 150px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     font-family: "EB Garamond", serif;
-  font-optical-sizing: auto;
+    font-optical-sizing: auto;
+    transition: transform 0.3s ease;
 }
+
+.livro-exemple:hover {
+    transform: scale(1.1); 
+}
+
 
 .livro-exemple span{
     color:#5a4d3e;
@@ -188,6 +194,13 @@ section{
 }
 
 
+.livro-imagem {
+    width: 100%; 
+    height: 220px; 
+    object-fit: cover;
+    border-radius: 5px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
 
 
 
@@ -238,30 +251,28 @@ section{
   margin-bottom: 12px; 
 }
 
-/* Container para os campos Autor e Ano */
-/* Agrupando Autor e Ano ao lado um do outro */
+
 .autor-ano {
     display: flex;
     justify-content: space-between;
 }
 
 .autor, .ano {
-    width: 48%; /* Controlando a largura para caber lado a lado */
+    width: 48%; 
 }
 
-/* Agrupando Categoria e Coleção ao lado um do outro */
 .categoria-colecao {
     display: flex;
     justify-content: space-between;
 }
 
 .categoria, .colecao {
-    width: 48%; /* Controlando a largura para caber lado a lado */
+    width: 48%; 
 }
 
 
 .custom-file-input {
-    display: none; /* Esconde o campo de arquivo real */
+    display: none;
 }
 
 .custom-file-button {
@@ -283,7 +294,7 @@ section{
 }
 
 
-/* Mostrar o nome da imagem selecionada */
+
 .file-name {
     display: inline-block;
     margin-top: 10px;
@@ -303,7 +314,7 @@ section{
     
 }
 
-/* Quando a tela for menor que 800px, o offcanvas será oculto e o botão será visível */
+
 @media (max-width: 799px) {
     .aside2{
         display: none;
@@ -312,5 +323,9 @@ section{
 
     main{
         margin-left: 0;
+    }
+
+    section{
+        justify-content: center;
     }
 }

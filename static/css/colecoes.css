@@ -92,30 +92,29 @@ aside{
   margin-bottom: 12px; 
 }
 
-/* Container para os campos Autor e Ano */
-/* Agrupando Autor e Ano ao lado um do outro */
+
 .autor-ano {
     display: flex;
     justify-content: space-between;
 }
 
 .autor, .ano {
-    width: 48%; /* Controlando a largura para caber lado a lado */
+    width: 48%; 
 }
 
-/* Agrupando Categoria e Coleção ao lado um do outro */
+
 .categoria-colecao {
     display: flex;
     justify-content: space-between;
 }
 
 .categoria, .colecao {
-    width: 48%; /* Controlando a largura para caber lado a lado */
+    width: 48%; 
 }
 
 
 .custom-file-input {
-    display: none; /* Esconde o campo de arquivo real */
+    display: none; 
 }
 
 .custom-file-button {
@@ -137,7 +136,7 @@ aside{
 }
 
 
-/* Mostrar o nome da imagem selecionada */
+
 .file-name {
     display: inline-block;
     margin-top: 10px;
@@ -212,7 +211,6 @@ main{
     
 }
 
-/* Quando a tela for menor que 800px, o offcanvas será oculto e o botão será visível */
 @media (max-width: 799px) {
     .aside2{
         display: none;

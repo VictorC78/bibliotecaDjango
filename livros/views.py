@@ -41,7 +41,7 @@ def index(request, letra=None):
                 livro_form.save()
                 return redirect('index')
 
-
+    livros = livros.order_by("?")
     return render(request, 'index.html', {
         'livro_form': livro_form,
         'livros': livros,

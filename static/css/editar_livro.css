@@ -66,8 +66,7 @@ div{
   margin-bottom: 12px; 
 }
 
-/* Container para os campos Autor e Ano */
-/* Agrupando Autor e Ano ao lado um do outro */
+
 .autor-ano {
     display: flex;
     justify-content: space-between;
@@ -76,11 +75,10 @@ div{
 }
 
 .autor, .ano {
-    width: 48%; /* Controlando a largura para caber lado a lado */
+    width: 48%; 
     background-color: transparent;
 }
 
-/* Agrupando Categoria e Coleção ao lado um do outro */
 .categoria-colecao {
     display: flex;
     justify-content: space-between;
@@ -89,13 +87,13 @@ div{
 }
 
 .categoria, .colecao {
-    width: 48%; /* Controlando a largura para caber lado a lado */
+    width: 48%; 
     background-color: transparent;
 }
 
 
 .custom-file-input {
-    display: none; /* Esconde o campo de arquivo real */
+    display: none; 
     
 }
 
@@ -121,7 +119,6 @@ div{
 }
 
 
-/* Mostrar o nome da imagem selecionada */
 .file-name {
     display: inline-block;
     margin-top: 10px;

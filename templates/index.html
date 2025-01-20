@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biblioteca - Livros</title>
+    <title>Bem-vindo, {{ user.username }}!</title>
 
     
     {% load static %}
@@ -45,6 +45,10 @@
                             <li style="margin-left:15px; font-weight: 600"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'colecoes' %}">COLEÇÕES</a></li>
                             <li style="margin-left:15px; font-weight: 600"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'categorias' %}">CATEGORIAS</a></li>
                         </ul>
+                        <div>
+                            <i class="bi bi-box-arrow-left"></i>
+                            <a href="{% url 'usuarios:logout' %}">Sair</a>
+                        </div>
                     </aside>
                     
                 </div>
@@ -60,6 +64,10 @@
             <li style="margin-left:15px; font-weight: 600"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'colecoes' %}">COLEÇÕES</a></li>
             <li style="margin-left:15px; font-weight: 600"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'categorias' %}">CATEGORIAS</a></li>
         </ul>
+        <div>
+            <i class="bi bi-box-arrow-left"></i>
+            <a href="{% url 'usuarios:logout' %}">Sair</a>
+        </div>
     </aside>
 
     <!-- Modal Novo Livro -->

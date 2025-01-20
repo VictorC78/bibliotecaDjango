@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body style="background-image: url('{% static "images/background_login.png" %}');">
+
+    <form method="post">
+        {% csrf_token %}
+        <span class="title">ENTRAR</span>
+
+        {% if form.errors %}
+            <div class="error-msg">
+                <p>Usuário ou senha inválidos. Tente novamente.</p>
+            </div>
+        {% endif %}
+
+        <div class="input-main">
+            <span>Usuário:</span>
+            <div class="input-action">
+                <i class="bi bi-person-fill"></i>
+                <input type="text" name="username" placeholder="Digite seu usuário:" required>
+            </div>
+            <hr>
+        </div>
+        <div class="input-main">
+            <span>Senha:</span>
+            <div class="input-action">
+                <i class="bi bi-lock-fill"></i>
+                <input type="password" name="password" placeholder="Digite sua senha:" required>
+            </div>
+            <hr>
+            <a href="#">Esqueceu sua senha?</a>
+        </div>
+        <div class="options">
+            <button type="submit"><u>LOGAR</u></button>
+            <span>ou</span>
+            <span>Ainda não tem conta? <a href="{% url 'usuarios:register' %}">Cadastre-se</a></span>
+        </div>
+    </form>
+
+</body>
+</html>

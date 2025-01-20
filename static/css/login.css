@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
+
+html, body{
+    height: 100%;
+    margin: 0;
+
+}
+
+body{
+    background-color: black;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    background-position: center; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective:2000px;
+}
+
+form{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+    width: 300px;
+    transform: rotateX(45deg); 
+    transform-origin: center;
+    font-family: "EB Garamond", serif;
+  font-optical-sizing: auto;
+  
+    
+}
+
+.title{
+    color: #5a4d3e ;
+    font-size: 70px;
+    font-weight: 600;
+    font-family: "MedievalSharp", cursive;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.input-main{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+}
+
+.input-main span{
+    font-size: 30px;
+    color: #5a4d3e;
+    font-weight: 600;
+}
+
+.input-action input{
+    border: 0;
+    color: black;
+    background-color: transparent;
+}
+.input-action input[type="text"]:focus,
+.input-action input[type="email"]:focus,
+.input-action input[type="password"]:focus,
+.input-action input[type="number"]:focus {
+    border: 0;
+    color: black;
+    background-color: transparent;
+    outline: none;
+}
+
+
+.options{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    gap: 40px;
+}
+
+a{
+    font-size: 30px;
+    color: #5a4d3e;
+    font-weight: 600;
+}
+
+i{
+    font-size: 30px;
+    color: #5a4d3e;
+}
+
+hr{
+    width:100%;
+    height: 2px;
+    background-color: #776f6f;
+    margin-bottom: 20px;
+    position: relative;
+    border: 0;
+}
+
+span{
+    font-size: 30px;
+}
+
+button{
+    border: 0;
+    background-color: transparent;
+    color: #5a4d3e;
+    font-weight: 600;
+    font-size:45px;
+    font-family: "MedievalSharp", cursive;
+  font-weight: 600;
+  font-style: normal;
+  cursor: pointer;
+}

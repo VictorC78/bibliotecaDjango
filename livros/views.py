@@ -1,10 +1,12 @@
-import unicodedata
+
 from django.shortcuts import get_object_or_404, redirect, render
 from livros.forms import AutorForm, CategoriaForm, ColecaoForm, LivroForm
 from livros.models import Autor, Categoria, Colecao, Livro
+from django.contrib.auth.decorators import login_required
 
 
 
+@login_required(login_url='/usuarios/login/')
 def index(request, letra=None):
 
     livro_form = LivroForm()

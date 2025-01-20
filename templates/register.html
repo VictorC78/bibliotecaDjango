@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body style="background-image: url('{% static "images/background_login.png" %}');">
+
+    <form method="post">
+        {% csrf_token %}
+        <span class="title">CADASTRAR</span>
+
+        {% if form.errors %}
+            <div class="error-msg">
+                <p>Corrija os erros abaixo:</p>
+                {{ form.errors }}
+            </div>
+        {% endif %}
+
+        <div class="input-main">
+            <span>Usuário:</span>
+            <div class="input-action">
+                <i class="bi bi-person-fill"></i>
+                <input type="text" name="username" placeholder="Digite seu usuário:" required>
+            </div>
+            <hr>
+        </div>
+        <div class="input-main">
+            <span>E-mail:</span>
+            <div class="input-action">
+                <i class="bi bi-envelope-fill"></i>
+                <input type="email" name="email" placeholder="Digite seu e-mail:" required>
+            </div>
+            <hr>
+        </div>
+        <div class="input-main">
+            <span>Senha:</span>
+            <div class="input-action">
+                <i class="bi bi-lock-fill"></i>
+                <input type="password" name="password1" placeholder="Digite sua senha:" required>
+            </div>
+            <hr>
+        </div>
+        <div class="input-main">
+            <span>Confirme sua Senha:</span>
+            <div class="input-action">
+                <i class="bi bi-lock-fill"></i>
+                <input type="password" name="password2" placeholder="Digite novamente sua senha:" required>
+            </div>
+            <hr>
+        </div>
+        <div class="options">
+            <button type="submit"><u>CRIAR CONTA</u></button>
+            <span>ou</span>
+            <span>Já tem conta? <a href="{% url 'usuarios:login' %}">Entrar</a></span>
+        </div>
+    </form>
+
+</body>
+</html>

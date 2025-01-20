@@ -16,6 +16,17 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+from django.shortcuts import redirect
+
+class LoginRequiredMiddleware:
+    """Middleware para exigir login em todas as páginas do site."""
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        if not request.user.is_authenticated and not request.path.startswith('/usuarios/login/'):
+            return redirect('/usuarios/login/')
+        return self.get_response(request)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -39,7 +50,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'livros',
+    'usuarios',
 ]
+
+LOGIN_URL = '/usuarios/login/'
+LOGOUT_REDIRECT_URL = '/usuarios/login/'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -49,6 +65,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'livros.middleware.LoginRequiredMiddleware',
 ]
 
 ROOT_URLCONF = 'bibliotecaDjango.urls'
@@ -107,6 +124,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # Para usar sessões no banco de dados
 
 
 # Internationalization

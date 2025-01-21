@@ -66,6 +66,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'livros.middleware.LoginRequiredMiddleware',
+    'livros.middleware.SuperuserRequiredMiddleware'
 ]
 
 ROOT_URLCONF = 'bibliotecaDjango.urls'

@@ -10,17 +10,11 @@
 </head>
 <body style="background-image: url('{% static "images/background_login.png" %}');">
 
-    <form method="post">
+    <form style="margin-bottom: 80px" method="post">
         {% csrf_token %}
         <span class="title">CADASTRAR</span>
 
-        {% if form.errors %}
-            <div class="error-msg">
-                <p>Corrija os erros abaixo:</p>
-                {{ form.errors }}
-            </div>
-        {% endif %}
-
+        
         <div class="input-main">
             <span>Usuário:</span>
             <div class="input-action">
@@ -38,6 +32,15 @@
             <hr>
         </div>
         <div class="input-main">
+            <span>Tipo de Conta:</span>
+            <div class="input-action">
+                <i class="bi bi-person-badge-fill"></i>
+                {{ form.is_superuser }}
+            </div>
+            <hr>
+            <span style="font-size: 15px; color: black"> *Com Super Usuário, poderá cadastrar, editar e deletar objetos do site.</span>
+        </div>        
+        <div class="input-main">
             <span>Senha:</span>
             <div class="input-action">
                 <i class="bi bi-lock-fill"></i>
@@ -53,6 +56,12 @@
             </div>
             <hr>
         </div>
+        {% if form.errors %}
+            <div style="font-size: 15px; color: black" class="error-msg">
+                <p>Corrija os erros abaixo:</p>
+                {{ form.errors }}
+            </div>
+        {% endif %}
         <div class="options">
             <button type="submit"><u>CRIAR CONTA</u></button>
             <span>ou</span>

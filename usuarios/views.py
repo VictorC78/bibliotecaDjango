@@ -21,18 +21,21 @@ def user_login(request):
     return render(request, 'login.html', {'form': form})
 
 
-
 def register(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save(commit=False) 
+            user.is_superuser = form.cleaned_data.get('is_superuser') == 'True'  
+            user.is_staff = user.is_superuser  
+            user.save()  
             return redirect('usuarios:login')
 
     else:
         form = RegisterForm()
     
     return render(request, 'register.html', {'form': form})
+
 
 def user_logout(request):
     logout(request)

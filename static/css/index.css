@@ -30,11 +30,20 @@ aside{
 
 } 
 
+.div-perfil{
+    margin-left: 15px !important;
+    margin-bottom: 50px;
+    font-weight: 600;
+}
 
 
 .div-logout{
     margin-left: 50px;
     margin-bottom: 10px;
+    font-family: "MedievalSharp", cursive;
+  font-weight: 600;
+  font-style: normal;
+  cursor: pointer;
 }
 
 .div-logout i{

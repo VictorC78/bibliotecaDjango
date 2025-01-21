@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bem-vindo, {{ user.username }}!</title>
+    <title>Bibioteca- Livros!</title>
 
     
     {% load static %}
@@ -28,7 +28,7 @@
 
 <body>
 
-    <nav style="margin-top: 0px !important;" class="navbar fixed-top">
+    <nav style="margin-top: 0px !important; " class="navbar fixed-top">
         <div style="background: url('') no-repeat center center !important; background-size: 100% auto !important; border: 0; margin-top: -10px !important; height: 57px;" class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -38,8 +38,15 @@
                 <div style="background-color: transparent !important;" class="offcanvas-body">
                     <aside>
                         <ul class="lista-lateral">
-                            <li style="margin-left:15px; font-weight:6400"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'index' %}">LIVROS</a></li>
+                            <div class="div-perfil">
+                                <i class="bi bi-person-circle"></i>
+                                <span>Olá, {{user.username}}</span>
+                                <hr style="height: 3px; width:90%">
+                            </div>
+                            <li style="margin-left:15px; font-weight:600"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'index' %}">LIVROS</a></li>
+                            {% if request.user.is_superuser %}
                             <li style="margin-left:25px; font-weight: 400"><a data-bs-toggle="modal" data-bs-target="#exampleModal" style="text-decoration:none; color: #5a4d3e">NOVO LIVRO+</a></li>
+                            {% endif %}
                             <li style="margin-left:15px; font-weight: 600"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'autores' %}">AUTORES</a></li>
                             <li style="margin-left:15px; font-weight: 600"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'colecoes' %}">COLEÇÕES</a></li>
                             <li style="margin-left:15px; font-weight: 600"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'categorias' %}">CATEGORIAS</a></li>
@@ -53,12 +60,20 @@
                 </div>
             </div>
         </div>
+
     </nav>
 
     <aside class="aside2">
         <ul class="lista-lateral">
+            <div class="div-perfil">
+                <i class="bi bi-person-circle"></i>
+                <span>Olá, {{user.username}}</span>
+                <hr style="height: 3px; width:80%">
+            </div>
             <li style="margin-left:15px; font-weight: 600"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'index' %}">LIVROS</a></li>
-            <li style="margin-left:25px; font-weight: 400"><a data-bs-toggle="modal" data-bs-target="#exampleModal" style="text-decoration:none; color: #5a4d3e">NOVO LIVRO+</a></li>
+                            {% if request.user.is_superuser %}
+                            <li style="margin-left:25px; font-weight: 400"><a data-bs-toggle="modal" data-bs-target="#exampleModal" style="text-decoration:none; color: #5a4d3e">NOVO LIVRO+</a></li>
+                            {% endif %}
             <li style="margin-left:15px; font-weight: 600"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'autores' %}">AUTORES</a></li>
             <li style="margin-left:15px; font-weight: 600"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'colecoes' %}">COLEÇÕES</a></li>
             <li style="margin-left:15px; font-weight: 600"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'categorias' %}">CATEGORIAS</a></li>

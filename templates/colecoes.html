@@ -38,6 +38,11 @@
                     <aside>
                         
                         <ul class="lista-lateral">
+                            <div class="div-perfil">
+                                <i class="bi bi-person-circle"></i>
+                                <span>Olá, {{user.username}}</span>
+                                <hr style="height: 3px; width:80%">
+                            </div>
                             <li style="margin-left:15px; font-weight: 600"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'index' %}">LIVROS</a></li>
                             
                             <li style="margin-left:15px; font-weight: 600"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'autores' %}">AUTORES</a></li>
@@ -56,6 +61,11 @@
 
     <aside class="aside2">
         <ul class="lista-lateral">
+            <div class="div-perfil">
+                <i class="bi bi-person-circle"></i>
+                <span>Olá, {{user.username}}</span>
+                <hr style="height: 3px; width:80%">
+            </div>
             <li style="margin-left:15px; font-weight: 600"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'index' %}">LIVROS</a></li>
                             
             <li style="margin-left:15px; font-weight: 600"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'autores' %}">AUTORES</a></li>
@@ -103,7 +113,10 @@
     <main>
         <div class="main-actions">
             <h2>COLEÇÕES</h2>
+            {% if request.user.is_superuser %}
+                            
             <button class="button-aplicar-filtros" style=" background: url('{% static 'images/card_button.png' %}') no-repeat center center !important;" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">NOVA COLEÇÃO+</button>
+                            {% endif %}
         </div>
         
 
@@ -111,6 +124,8 @@
             {% for colecao in colecoes %}
             <div style="display:flex; justify-content: space-between; align-items:center; margin-top: 20px">   
                 <h4>{{colecao.nome}}</h4>
+                {% if request.user.is_superuser %}
+                            
                 <div class="main-icons">
                     <a style="color: #5a4d3e;" href="{% url 'editar_colecao' colecao.id %}">
                         <i style="color: #5a4d3e;" class="bi bi-pencil-square"></i> 
@@ -119,6 +134,7 @@
                         <i  class="bi bi-trash3-fill"></i>
                     </a>
                 </div>
+                            {% endif %}
             </div>
             <hr style="margin-top: -7px">
             <span>{{colecao.descricao}}</span> <br><br>

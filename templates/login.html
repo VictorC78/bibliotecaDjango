@@ -14,12 +14,7 @@
         {% csrf_token %}
         <span class="title">ENTRAR</span>
 
-        {% if form.errors %}
-            <div class="error-msg">
-                <p>Usuário ou senha inválidos. Tente novamente.</p>
-            </div>
-        {% endif %}
-
+        
         <div class="input-main">
             <span>Usuário:</span>
             <div class="input-action">
@@ -37,6 +32,11 @@
             <hr>
             <a href="#">Esqueceu sua senha?</a>
         </div>
+        {% if form.errors %}
+            <div class="error-msg">
+                <p>Usuário ou senha inválidos. Tente novamente.</p>
+            </div>
+        {% endif %}
         <div class="options">
             <button type="submit"><u>LOGAR</u></button>
             <span>ou</span>

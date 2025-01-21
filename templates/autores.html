@@ -36,7 +36,7 @@
             <div style="background-color: transparent !important; border: 0; " class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                 <div style="background-color: transparent !important;" class="offcanvas-body">
                     <aside>
-                        <button style="margin-left: 40px; margin-top: 20px;" type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        
                         <ul class="lista-lateral">
                             <li style="margin-left:15px; font-weight:600"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'index' %}">LIVROS</a></li>
                             
@@ -44,6 +44,10 @@
             <li style="margin-left:15px; font-weight:600"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'colecoes' %}">COLEÇÕES</a></li>
             <li style="margin-left:15px; font-weight:600"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'categorias' %}">CATEGORIAS</a></li>
                         </ul>
+                        <div style="margin-bottom: 50px" class="div-logout">
+                            <i class="bi bi-box-arrow-left"></i>
+                            <a href="{% url 'usuarios:logout' %}">Sair</a>
+                        </div>
                     </aside>
                 </div>
             </div>
@@ -58,6 +62,10 @@
             <li style="margin-left:15px; font-weight:600"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'colecoes' %}">COLEÇÕES</a></li>
             <li style="margin-left:15px; font-weight:600"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'categorias' %}">CATEGORIAS</a></li>
         </ul>
+        <div class="div-logout">
+            <i class="bi bi-box-arrow-left"></i>
+            <a href="{% url 'usuarios:logout' %}">Sair</a>
+        </div>
     </aside>
 
 

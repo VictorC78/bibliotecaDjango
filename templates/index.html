@@ -40,7 +40,7 @@
                         <ul class="lista-lateral">
                             <div class="div-perfil">
                                 <i class="bi bi-person-circle"></i>
-                                <span>Olá, {{user.username}}</span>
+                                <a style=" color:#5a4d3e" href="{% url 'usuarios:perfil' %}">Olá, {{user.username}}</a>
                                 <hr style="height: 3px; width:90%">
                             </div>
                             <li style="margin-left:15px; font-weight:600"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'index' %}">LIVROS</a></li>
@@ -67,7 +67,7 @@
         <ul class="lista-lateral">
             <div class="div-perfil">
                 <i class="bi bi-person-circle"></i>
-                <span>Olá, {{user.username}}</span>
+                <a style=" color:#5a4d3e" href="{% url 'usuarios:perfil' %}">Olá, {{user.username}}</a>
                 <hr style="height: 3px; width:80%">
             </div>
             <li style="margin-left:15px; font-weight: 600"><a style="text-decoration:none; color: #5a4d3e" href="{% url 'index' %}">LIVROS</a></li>

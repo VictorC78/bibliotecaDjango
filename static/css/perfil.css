@@ -1,0 +1,267 @@
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
+
+html, body{
+    height: 100%;
+    margin: auto
+}
+
+body{
+    display: flex;
+    gap: 20px
+    
+}
+
+
+
+aside{
+    width: 235px;
+    height: 100%;
+    background-color: black;
+    background: url('/static/images/barra_lateral.png') no-repeat center center;
+    background-size: cover; 
+    margin-left: -30px;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+
+} 
+
+.div-perfil{
+    margin-left: 15px !important;
+    margin-bottom: 50px;
+    font-weight: 600;
+}
+
+
+.div-logout{
+    margin-left: 50px;
+    margin-bottom: 10px;
+    font-family: "MedievalSharp", cursive;
+  font-weight: 600;
+  font-style: normal;
+  cursor: pointer;
+}
+
+.div-logout i{
+    color: #5a4d3e;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.div-logout a{
+    color:#5a4d3e;
+    text-decoration: none;
+    font-size: 25px;
+    font-family: "MedievalSharp", cursive;
+  font-weight: 600;
+  font-style: normal;
+  cursor: pointer;
+}
+
+.lista-lateral{
+    list-style: none;
+    margin-left: 10px;
+    margin-top: 50px;
+    font-size: 17px;
+    color: #5a4d3e ;
+    
+    
+}
+
+.lista-lateral li{
+    margin-top: 15px;
+    font-family: "MedievalSharp", cursive;
+  font-weight: 600;
+  font-style: normal;
+  cursor: pointer;
+}
+.lista-lateral li a{
+    text-decoration: none;
+    color: #5a4d3e;
+}
+
+.livro-exemple {
+    width: 130px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-family: "EB Garamond", serif;
+    font-optical-sizing: auto;
+    transition: transform 0.3s ease;
+    
+}
+
+.livro-exemple:hover {
+    transform: scale(1.1); 
+}
+
+
+.livro-exemple span{
+    color:#5a4d3e;
+    font-weight: bold;
+}
+
+.livro-exemple i{
+    color: gray;
+}
+
+.livro-exemple img{
+    border-radius: 5px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+
+main{
+    margin-left: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    
+}
+
+.user-info{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.user-details{
+    display: flex;
+    flex-direction: column;
+    font-family: "EB Garamond", serif;
+    font-optical-sizing: auto;
+  color: #5a4d3e;
+  font-size: 25px;
+}
+
+strong{
+    color: #5a4d3e;
+    font-size: 20px;
+    font-family: "EB Garamond", serif;
+    font-optical-sizing: auto;
+}
+
+
+
+.user-info i{
+    font-size: 200px;
+    color: #5a4d3e;
+}
+.input-main{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    font-family: "EB Garamond", serif;
+    font-optical-sizing: auto;
+    
+}
+
+.input-main span{
+    font-size: 15px;
+    color: #5a4d3e;
+    font-weight: 600;
+}
+
+.input-action i{
+    font-size: 25px;
+    color: #5a4d3e;
+}
+
+.input-action input{
+    border: 0;
+    color: black;
+    background-color: transparent;
+    
+}
+.input-action input[type="text"]:focus,
+.input-action input[type="email"]:focus,
+.input-action input[type="password"]:focus,
+.input-action input[type="number"]:focus {
+    border: 0;
+    color: black;
+    background-color: transparent;
+    outline: none;
+}
+
+.input-main hr{
+    width: 250px;
+}
+
+.btn-senha{
+    border-radius: 10px;
+    padding: 5px;
+    color: #5a4d3e;
+    background-color: #ccbc9c;
+    border: 0;
+    width: 150px;
+    font-weight: 600;
+    font-family: "EB Garamond", serif;
+    font-optical-sizing: auto;
+}
+
+search{
+    display: flex;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-family: "EB Garamond", serif;
+    font-optical-sizing: auto;
+
+}
+
+
+@media (min-width: 800px) {
+    .navbar{
+        display: none !important;
+
+    }
+
+    
+}
+
+
+@media (max-width: 799px) {
+    .aside2{
+        display: none;
+
+    }
+
+    main{
+        margin-top: 750px;
+        margin-left: 0;
+        justify-content: center;
+        align-items: center;
+    }
+
+    search{
+        justify-content: center;
+        align-items: center;
+    }
+
+    .user-info{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0px;
+    }
+
+    .user-details{
+        text-align: center;
+    }
+}
+
+
+
+
+@media (max-width: 1029px) {
+    
+
+    
+
+    
+    
+}

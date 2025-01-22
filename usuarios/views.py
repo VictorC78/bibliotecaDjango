@@ -1,7 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
+
+from livros.models import Livro
 from .forms import RegisterForm
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
 
 def user_login(request):
     if request.method == 'POST':
@@ -40,3 +44,18 @@ def register(request):
 def user_logout(request):
     logout(request)
     return redirect('usuarios:login')
+
+
+def perfil(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(user=request.user, data=request.POST)
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request, form.user)  
+            return redirect('usuarios:perfil') 
+    else:
+        form = PasswordChangeForm(user=request.user)
+
+    livros  = Livro.objects.all()
+    
+    return render(request, 'perfil.html', {'form': form, 'livros' : livros})

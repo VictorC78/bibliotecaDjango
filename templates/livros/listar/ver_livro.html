@@ -63,7 +63,19 @@
             <a style="text-decoration:none" href="{% url 'ver_livro' livro.id %}">
                 <div class="livro-exemple">
                     {% if livro.imagem %}
-                        <img src="{{ livro.imagem.url }}" alt="{{ livro.nome }}" style="max-width: 100px;">
+                    <div class="livro-container">
+                        <img src="{{ livro.imagem.url }}" alt="{{ livro.nome }}" class="livro-imagem" style="max-width:100px">
+                        
+                        
+                        <form action="{% url 'atividades:favoritar_livro' livro.id %}" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="livro_id" value="{{ livro.id }}">
+                            <button name="favoritar" type="submit" class="favorite-btn {% if livro.id in livros_favoritos %} favorited {% endif %}">
+                                ♥
+                            </button>
+                        </form>
+            
+                    </div>
                     {% else %}
                         Sem imagem
                     {% endif %}

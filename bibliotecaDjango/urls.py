@@ -25,6 +25,7 @@ from livros import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('usuarios/', include('usuarios.urls')),
+    path('atividades/', include('atividades.urls')),
     path('', views.index, name='index'),
     path('letra/<str:letra>/', views.index, name='index_com_letra'),
     path('livro/<int:id>', views.ver_livro, name='ver_livro'),

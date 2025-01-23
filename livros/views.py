@@ -1,5 +1,6 @@
 
 from django.shortcuts import get_object_or_404, redirect, render
+from atividades.models import Favorito
 from livros.forms import AutorForm, CategoriaForm, ColecaoForm, LivroForm
 from livros.models import Autor, Categoria, Colecao, Livro
 from django.contrib.auth.decorators import login_required
@@ -10,7 +11,6 @@ from django.contrib.auth.decorators import login_required
 def index(request, letra=None):
 
     livro_form = LivroForm()
-    
     livros = Livro.objects.all()
     colecoes = Colecao.objects.all().order_by("nome")
     autores = Autor.objects.all().order_by("nome")
@@ -44,12 +44,17 @@ def index(request, letra=None):
                 return redirect('index')
 
     livros = livros.order_by("?")
+    
+    livros_favoritos_ids = Favorito.objects.filter(user=request.user).values_list('livro_id', flat=True)
+    
+    
     return render(request, 'index.html', {
         'livro_form': livro_form,
         'livros': livros,
         'colecoes' : colecoes,
         'autores' : autores,
         'letra': letra,
+        'livros_favoritos': livros_favoritos_ids,
     })
 
     
@@ -62,10 +67,13 @@ def ver_livro(request, id):
         colecao=livro.colecao,
         categoria=livro.categoria
     ).exclude(id=livro.id)
+    
+    livros_favoritos_ids = Favorito.objects.filter(user=request.user).values_list('livro_id', flat=True)
 
     return render(request, 'livros/listar/ver_livro.html', {
         'livro': livro,
-        'livros_relacionados': livros_relacionados
+        'livros_relacionados': livros_relacionados,
+        'livros_favoritos': livros_favoritos_ids,
     })
 
 def editar_livro(request, id):

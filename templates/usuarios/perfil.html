@@ -77,19 +77,20 @@
         
         <strong>Títulos marcados como Gostei</strong>
         <search>
-            {% for livro in livros %}
-                <a style="text-decoration:none" href="{% url 'ver_livro' livro.id %}">
-                    <div class="livro-exemple">
-                        {% if livro.imagem %}
-                            <img src="{{ livro.imagem.url }}" alt="{{ livro.nome }}" style="max-width: 100px;">
-                        {% else %}
-                            Sem imagem
-                        {% endif %}
-                        <span>{{ livro.nome }}</span>
-                        <i>{{ livro.autor.nome }}</i>
-                    </div>
-                <a/>
-                {% endfor %}
+            {% for favorito in livros %}
+    <a style="text-decoration:none" href="{% url 'ver_livro' favorito.livro.id %}">
+        <div class="livro-exemple">
+            {% if favorito.livro.imagem %}
+                <img src="{{ favorito.livro.imagem.url }}" alt="{{ favorito.livro.nome }}" style="max-width: 100px;">
+            {% else %}
+                Sem imagem
+            {% endif %}
+            <span>{{ favorito.livro.nome }}</span>
+            <i>{{ favorito.livro.autor.nome }}</i>
+        </div>
+    </a>
+{% endfor %}
+
         </search>
         
     </main>

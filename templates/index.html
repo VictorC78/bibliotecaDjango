@@ -27,8 +27,11 @@
 </head>
 
 <body>
+    
+
 
     {% include 'navbar.html' %}
+    
     <!-- Modal Novo Livro -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -195,17 +198,28 @@
             <a style="text-decoration:none" href="{% url 'ver_livro' livro.id %}">
                 <div class="livro-exemple">
                     {% if livro.imagem %}
-                    <img src="{{ livro.imagem.url }}" alt="{{ livro.nome }}" class="livro-imagem">
+                    <div class="livro-container">
+                        <img src="{{ livro.imagem.url }}" alt="{{ livro.nome }}" class="livro-imagem">
+                        
+                        
+                        <form action="{% url 'atividades:favoritar_livro' livro.id %}" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="livro_id" value="{{ livro.id }}">
+                            <button name="favoritar" type="submit" class="favorite-btn {% if livro.id in livros_favoritos %} favorited {% endif %}">
+                                ♥
+                            </button>
+                        </form>
+            
+                    </div>
                     {% else %}
                         Sem imagem
                     {% endif %}
                     <span>{{ livro.nome }}</span>
                     <i>{{ livro.autor.nome }}</i>
                 </div>
-            <a/>
+            </a>
+            
             {% endfor %}
-
-           
 
            
         </section>

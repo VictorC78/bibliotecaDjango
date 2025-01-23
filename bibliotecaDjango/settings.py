@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'livros',
     'usuarios',
+    'atividades',
 ]
 
 LOGIN_URL = '/usuarios/login/'

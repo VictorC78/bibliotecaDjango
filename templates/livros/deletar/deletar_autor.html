@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
 
-    <title>Deletar Categoria</title>
-    <link rel="stylesheet" href="{% static 'css/deletar_categoria.css' %}">
+    <title>Deletar Autor</title>
+    <link rel="stylesheet" href="{% static 'css/livros/deletar/deletar_autor.css' %}">
 </head>
 <body >
     <div style="background: url('{% static 'images/fundo_edit.png' %}') no-repeat center center;">
             <div  style="background: url('{% static 'images/card_modal.png' %}') no-repeat center center !important; background-size: 100% auto !important; height: 420px; border: 0; padding: 75px; width:250px;" class="form-addlivro" method="post">
                 <h4>Tem certeza que deseja excluir?</h4>
-                <span> {{categoria.nome}}</span><br>
+                <span> {{autor.nome}}</span><br>
                 <form method="post">
-                    <a href="{% url 'categorias' %}"> Cancelar </a>
+                    <a href="{% url 'autores' %}"> Cancelar </a>
                     {% csrf_token %}
                     <button name="confirmar" type="submit">
                         Confirmar

@@ -22,7 +22,7 @@ def user_login(request):
     else:
         form = AuthenticationForm()
     
-    return render(request, 'login.html', {'form': form})
+    return render(request, 'usuarios/login.html', {'form': form})
 
 
 def register(request):
@@ -38,7 +38,7 @@ def register(request):
     else:
         form = RegisterForm()
     
-    return render(request, 'register.html', {'form': form})
+    return render(request, 'usuarios/register.html', {'form': form})
 
 
 def user_logout(request):
@@ -58,4 +58,4 @@ def perfil(request):
 
     livros  = Livro.objects.all()
     
-    return render(request, 'perfil.html', {'form': form, 'livros' : livros})
+    return render(request, 'usuarios/perfil.html', {'form': form, 'livros' : livros})

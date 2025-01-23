@@ -63,7 +63,7 @@ def ver_livro(request, id):
         categoria=livro.categoria
     ).exclude(id=livro.id)
 
-    return render(request, 'ver_livro.html', {
+    return render(request, 'livros/listar/ver_livro.html', {
         'livro': livro,
         'livros_relacionados': livros_relacionados
     })
@@ -79,7 +79,7 @@ def editar_livro(request, id):
     else:
         form = LivroForm(instance=livro)
 
-    return render(request, 'editar_livro.html', {'form': form, 'livro': livro})
+    return render(request, 'livros/editar/editar_livro.html', {'form': form, 'livro': livro})
 
 def deletar_livro(request, pk):
     livro = get_object_or_404(Livro, pk=pk)
@@ -89,7 +89,7 @@ def deletar_livro(request, pk):
             livro.delete()
             return redirect('index') 
 
-    return render(request, 'deletar_livro.html', {'livro': livro})
+    return render(request, 'livros/deletar/deletar_livro.html', {'livro': livro})
 
 def categorias(request):
     categoria_form = CategoriaForm()
@@ -103,7 +103,7 @@ def categorias(request):
             
     categorias = Categoria.objects.all().order_by("nome")
     
-    return render(request, 'categorias.html', {
+    return render(request, 'livros/listar/categorias.html', {
         'categoria_form': categoria_form,
         'categorias': categorias,
     })
@@ -118,7 +118,7 @@ def editar_categoria(request, id):
     else:
         form = CategoriaForm(instance=categoria)
 
-    return render(request, 'editar_categoria.html', {'form': form, 'categoria': categoria})
+    return render(request, 'livros/editar/editar_categoria.html', {'form': form, 'categoria': categoria})
 
 def deletar_categoria(request, pk):
     categoria = get_object_or_404(Categoria, pk=pk)
@@ -128,7 +128,7 @@ def deletar_categoria(request, pk):
             categoria.delete()
             return redirect('categorias') 
 
-    return render(request, 'deletar_categoria.html', {'categoria': categoria})
+    return render(request, 'livros/deletar/deletar_categoria.html', {'categoria': categoria})
 
 def colecoes(request):
     
@@ -143,7 +143,7 @@ def colecoes(request):
             
     colecoes = Colecao.objects.prefetch_related('livros').all().order_by("nome")
     
-    return render(request, 'colecoes.html', {
+    return render(request, 'livros/listar/colecoes.html', {
         'colecao_form': colecao_form,
         'colecoes': colecoes,
     })
@@ -158,7 +158,7 @@ def editar_colecao(request, id):
     else:
         form = ColecaoForm(instance=colecao)
 
-    return render(request, 'editar_colecao.html', {'form': form, 'colecao': colecao})
+    return render(request, 'livros/editar/editar_colecao.html', {'form': form, 'colecao': colecao})
 
 def deletar_colecao(request, pk):
     colecao = get_object_or_404(Colecao, pk=pk)
@@ -168,7 +168,7 @@ def deletar_colecao(request, pk):
             colecao.delete()
             return redirect('colecoes') 
 
-    return render(request, 'deletar_colecao.html', {'colecao': colecao})
+    return render(request, 'livros/deletar/deletar_colecao.html', {'colecao': colecao})
     
 def autores(request):
     autor_form = AutorForm()
@@ -183,7 +183,7 @@ def autores(request):
    
     autores = Autor.objects.prefetch_related('livros').all()
     
-    return render(request, 'autores.html', {
+    return render(request, 'livros/listar/autores.html', {
         'autor_form': autor_form,
         'autores': autores,
     })
@@ -198,7 +198,7 @@ def editar_autor(request, id):
     else:
         form = AutorForm(instance=autor)
 
-    return render(request, 'editar_autor.html', {'form': form, 'autor': autor})
+    return render(request, 'livros/editar/editar_autor.html', {'form': form, 'autor': autor})
 
 def deletar_autor(request, pk):
     autor = get_object_or_404(Autor, pk=pk)
@@ -208,4 +208,4 @@ def deletar_autor(request, pk):
             autor.delete()
             return redirect('autores') 
 
-    return render(request, 'deletar_autor.html', {'autor': autor})
+    return render(request, 'livros/deletar/deletar_autor.html', {'autor': autor})

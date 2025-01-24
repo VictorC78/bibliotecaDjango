@@ -72,6 +72,24 @@
         
             <button class="btn-senha" type="submit">Salvar</button>
         </form><br>
+
+        <strong>Títulos Reservados</strong>
+        <search>
+            {% for reservado in reservados %}
+    <a style="text-decoration:none" href="{% url 'ver_livro' reservado.livro.id %}">
+        <div class="livro-exemple">
+            {% if reservado.livro.imagem %}
+                <img src="{{ reservado.livro.imagem.url }}" alt="{{ reservado.livro.nome }}" style="max-width: 100px;">
+            {% else %}
+                Sem imagem
+            {% endif %}
+            <span>{{ reservado.livro.nome }}</span>
+            <i>{{ reservado.livro.autor.nome }}</i>
+        </div>
+    </a>
+{% endfor %}
+
+        </search>
         
        
         

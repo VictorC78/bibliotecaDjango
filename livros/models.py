@@ -14,6 +14,7 @@ class Livro(models.Model):
     categoria = models.ForeignKey('Categoria', on_delete=models.CASCADE)
     colecao = models.ForeignKey('Colecao', on_delete=models.SET_NULL, null=True, blank=True, related_name="livros")
     imagem = models.ImageField(upload_to='livros/', null=True, blank=True)
+    is_reservado = models.BooleanField(default=False)
     data_criacao = models.DateTimeField(auto_now_add=True)
     data_atualizacao = models.DateTimeField(auto_now=True)
     

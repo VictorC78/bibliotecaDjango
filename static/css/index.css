@@ -212,6 +212,9 @@ section{
     font-family: "EB Garamond", serif;
     font-optical-sizing: auto;
     transition: transform 0.3s ease;
+    justify-content: space-between;
+    height: 390px;
+    width: 180px;
 }
 
 .livro-exemple:hover {
@@ -235,6 +238,28 @@ section{
     object-fit: cover;
     border-radius: 5px; 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+.btn-reservar:hover{
+    background-image: none !important;
+    background-color: #5a4d3e;
+    color: #000000;
+}
+
+.btn-indisponivel{
+    
+    color: red !important;
+    font-weight: bolder;
+    border: 0;
+
+}
+
+.btn-cancelar{
+    color: white !important;
+}
+
+.btn-cancelar:hover{
+    color:gray !important;
 }
 
 

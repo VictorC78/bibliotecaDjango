@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
 
-from atividades.models import Favorito
+from atividades.models import Favorito, Reserva
 from livros.models import Livro
 from .forms import RegisterForm
 from django.contrib.auth.forms import PasswordChangeForm
@@ -58,5 +58,6 @@ def perfil(request):
         form = PasswordChangeForm(user=request.user)
 
     livros  = Favorito.objects.filter(user=request.user)
+    reservados = Reserva.objects.filter(user=request.user)
     
-    return render(request, 'usuarios/perfil.html', {'form': form, 'livros' : livros})
+    return render(request, 'usuarios/perfil.html', {'form': form, 'livros' : livros, 'reservados' : reservados})

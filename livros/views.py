@@ -1,6 +1,6 @@
 
 from django.shortcuts import get_object_or_404, redirect, render
-from atividades.models import Favorito
+from atividades.models import Favorito, Reserva
 from livros.forms import AutorForm, CategoriaForm, ColecaoForm, LivroForm
 from livros.models import Autor, Categoria, Colecao, Livro
 from django.contrib.auth.decorators import login_required
@@ -46,6 +46,7 @@ def index(request, letra=None):
     livros = livros.order_by("?")
     
     livros_favoritos_ids = Favorito.objects.filter(user=request.user).values_list('livro_id', flat=True)
+    livros_reservados_ids = Reserva.objects.filter(user=request.user).values_list('livro_id', flat=True)
     
     
     return render(request, 'index.html', {
@@ -55,6 +56,7 @@ def index(request, letra=None):
         'autores' : autores,
         'letra': letra,
         'livros_favoritos': livros_favoritos_ids,
+        'livros_reservados': livros_reservados_ids,
     })
 
     

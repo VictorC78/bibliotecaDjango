@@ -25,11 +25,19 @@
 <article>
     <main>
 
-        {% if livro.imagem %}
-                        <img src="{{ livro.imagem.url }}" alt="{{ livro.nome }}">
-                    {% else %}
-                        Sem imagem
-                    {% endif %}
+        <div class="livro-container">
+            <img src="{{ livro.imagem.url }}" alt="{{ livro.nome }}" class="livro-imagem">
+            
+            
+            <form action="{% url 'atividades:favoritar_livro' livro.id %}" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="livro_id" value="{{ livro.id }}">
+                <button name="favoritar" type="submit" class="favorite-btn {% if livro.id in livros_favoritos %} favorited {% endif %}">
+                    ♥
+                </button>
+            </form>
+
+        </div>
         <div>
             <actions style=" margin-top: 20px;">   
                 <h4>{{livro.nome}}</h4>
@@ -53,6 +61,24 @@
                 <span><strong>Categoria: </strong>{{livro.categoria.nome}}</span>
                 <span><strong>Coleção: </strong>{{livro.colecao.nome}}</span>
             </section>
+
+            <form action="{% url 'atividades:reservar_livro' livro.id %}" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="livro_id" value="{{ livro.id }}">
+
+                {% if livro.is_reservado %}
+                    {% if livro.id in livros_reservados %}
+                        <button class="button-aplicar-filtros btn-cancelar" style="border-radius: 5px" type="submit">DEVOLVER</button>
+                    {% else %}
+                        <span class="btn-indisponivel" type="button">INDISPONÍVEL</span>
+                    {% endif %}
+                {% else %}
+                    <button class="button-aplicar-filtros btn-reservar" 
+                    style="background: url('{% static 'images/card_button.png' %}') no-repeat center center !important; border-radius: 5px" 
+                    type="submit">RESERVAR</button>
+                {% endif %}
+
+            </form>
         </div>
     </main>
     

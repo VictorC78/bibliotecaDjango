@@ -1,72 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
-
-
-
-article{
-    margin-left: 250px;
-}
 main{
    
     width: 100%;
+    margin-left: 250px;
     padding: 20px;
     font-family: "EB Garamond", serif;
   font-optical-sizing: auto;
   margin-top: 50px;
-  display: flex;
-  gap: 20px;
 }
 
-main img{
-    height: 500px;
-    border-radius: 5px; 
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+main h2{
+    color:  #5a4d3e; 
+    font-family: "MedievalSharp", cursive;
+    font-weight: 600;
+    font-style: normal;
 }
 
-main div h2{
-    color: #5a4d3e;
-}
 
-main div{
+section{
     display: flex;
-    flex-direction: column;
-}
-
-main div section{
-    display: flex;
-    gap: 15px;
     flex-wrap: wrap;
-    margin-top: 20px;
+    gap: 40px;
 }
-
-.main-icons{
-    display: flex;
-    gap: 5px;
-}
-
-footer{
-    width: 100%;
-    padding: 20px;
-    font-family: "EB Garamond", serif;
-  font-optical-sizing: auto;
-  margin-top: 20px;
-}
-
-footer h4{
-    color: #5a4d3e;
-}
-
-footer search{
-    display: flex;
-    margin-top: 20px;
-    flex-wrap: wrap;
-    gap: 20px;
-
-}
-
 
 .livro-exemple {
-    width: 130px;
+    width: 150px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -74,7 +31,9 @@ footer search{
     font-family: "EB Garamond", serif;
     font-optical-sizing: auto;
     transition: transform 0.3s ease;
-    
+    justify-content: space-between;
+    height: 390px;
+    width: 180px;
 }
 
 .livro-exemple:hover {
@@ -91,14 +50,13 @@ footer search{
     color: gray;
 }
 
-.livro-exemple img{
+
+.livro-imagem {
+    width: 100%; 
+    height: 220px; 
+    object-fit: cover;
     border-radius: 5px; 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-}
-
-.livro-container {
-    position: relative;
-    display: inline-block;
 }
 
 .btn-reservar:hover{
@@ -117,11 +75,6 @@ footer search{
 
 .btn-cancelar{
     color: white !important;
-    background-color: #000000;
-    border: 0;
-    padding: 8px;
-    font-family: "EB Garamond", serif;
-    font-optical-sizing: auto;
 }
 
 .btn-cancelar:hover{
@@ -140,28 +93,11 @@ footer search{
     font-style: normal;
 }
 
+
+
 .livro-container {
     position: relative;
     display: inline-block;
-}
-
-
-
-
-.favorite-btn:hover {
-    background-color: #000000;
-    color: white;
-}
-
-
-.favorite-btn.favorited {
-    background-color: rgb(255, 0, 0);
-    color: rgb(255, 255, 255);
-}
-
-.favorite-btn.favorited:hover {
-    background-color: rgb(255, 255, 255);
-    color: rgb(255, 0, 0);
 }
 
 
@@ -202,6 +138,7 @@ footer search{
 }
 
 
+
 @media (min-width: 800px) {
     .navbar{
         display: none !important;
@@ -211,53 +148,15 @@ footer search{
     
 }
 
-
 @media (max-width: 799px) {
     .aside2{
         display: none;
 
     }
 
-    article{
+    main{
         margin-left: 0;
     }
-}
 
-
-
-
-@media (max-width: 1029px) {
-    
-
-    main{
-        align-items: center;
-        flex-direction: column;
-    }
-
-    main div{
-        justify-content: center;
-        align-items: center;
-    }
-    main img{
-        height: 300px;
-    }
-
-    hr{
-        width: 100%;
-        height: 1px;
-
-    }
-
-    main div span{
-        text-align: center;
-    }
-    main div section{
-        justify-content: center;
-        align-items: center;
-    }
-
-    footer h4{
-        text-align: center;
-    }
     
 }

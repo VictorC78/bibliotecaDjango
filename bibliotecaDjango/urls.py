@@ -40,6 +40,7 @@ urlpatterns = [
     path('autores/', views.autores, name='autores'),
     path('autores/editar/<int:id>/', views.editar_autor, name='editar_autor'),
     path('deletar_autor/<int:pk>/', views.deletar_autor, name='deletar_autor'),
+    path('sobre/', views.sobre, name='sobre'),
 ]
 
 if settings.DEBUG:  # Apenas para o modo de desenvolvimento

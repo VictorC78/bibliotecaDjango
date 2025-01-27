@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required
 from .models import Favorito, Reserva
 from livros.models import Livro
@@ -17,7 +17,7 @@ def favoritar_livro(request, livro_id):
         Favorito.objects.create(user=request.user, livro=livro)
         
 
-    return redirect('index')
+    return redirect(request.META.get('HTTP_REFERER', '/'))
 
 @login_required
 def reservar_livro(request, livro_id):
@@ -39,4 +39,19 @@ def reservar_livro(request, livro_id):
         livro.is_reservado = True  
         livro.save()
 
-    return redirect('index')  
+    return redirect(request.META.get('HTTP_REFERER', '/')) 
+
+def reservas(request):
+    
+    reservados = Reserva.objects.filter(user=request.user)
+    favoritos = Favorito.objects.filter(user=request.user).values_list('livro_id', flat=True)
+    
+    return render(request, 'atividades/reservas.html', {'reservados' : reservados, 'livros_favoritos' : favoritos})
+
+def favoritos(request):
+    
+    reservado_ids = Reserva.objects.filter(user=request.user).values_list('livro_id', flat=True)
+    favoritos = Favorito.objects.filter(user=request.user)
+    favoritos_ids = Favorito.objects.filter(user=request.user).values_list('livro_id', flat=True)
+    
+    return render(request, 'atividades/favoritos.html', {'livros_favoritos' : favoritos, 'favoritos_ids' : favoritos_ids, 'livros_reservados' : reservado_ids})

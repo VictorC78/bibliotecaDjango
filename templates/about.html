@@ -1,36 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca - Autores</title>
+
     {% load static %}
 
-    <title>{{user.username}}</title>
-    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
-
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-</head>
-<body >
-   
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2025 - Todos os direitos reservados.</p>
-            <p>Nome do Projeto - Breve descrição aqui.</p>
-            <div class="footer-links">
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
-            </div>
-        </div>
-    </footer>
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+</head>
+
+<body>
+
+    {% include 'navbar.html' %}
+
+    <main>
+        
+        <h2>SOBRE O PROJETO</h2>
+
+        <div >   
+            <h4>Introdução</h4>
+            <p>Este projeto foi desenvolvido no âmbito do curso <strong>Desenvolvimento Web com o Framework Django</strong>, oferecido pelo <strong>Instituto Federal de Educação, Ciência e Tecnologia do Sertão Pernambucano</strong>. 
+                O principal objetivo do projeto é proporcionar uma experiência prática no desenvolvimento de aplicações web utilizando Django, consolidando os conhecimentos adquiridos ao longo do curso. 
+                A iniciativa visa reforçar conceitos fundamentais como modelagem de dados, criação de rotas, manipulação de templates e integração com bancos de dados.</p>      
+                <hr>
+        </div>
+        
+        <div >   
+            <h4>Descrição do Projeto</h4>
+            <p>O projeto consiste em uma aplicação web que simula uma <strong>Livraria Virtual</strong>, permitindo a gestão de livros, autores, coleções e reservas. 
+                Com uma interface intuitiva e organizada, os usuários podem visualizar os livros disponíveis, consultar informações sobre autores e gerenciar suas reservas. 
+                A aplicação foi desenvolvida utilizando <strong>Django</strong> para o backend, <strong>HTML, CSS e JavaScript</strong> para a interface, e um <strong>banco de dados relacional</strong> para armazenar as informações de maneira eficiente e segura. 
+                Além disso, a plataforma conta com um sistema de autenticação de usuários, garantindo um ambiente personalizado para cada visitante.</p>      
+                <hr>
+        </div>
+        
+        <div >   
+            <h4>Desenvolvedor</h4>
+            <p><strong>Nome:</strong> Álvaro Victor Carlos Parente</p>
+            <p>
+                <i class="bi bi-instagram"></i>
+                <a href="https://www.instagram.com/alvaaro_dev/?hl=pt-br" style"text-decoration: none; color: black" target="_blank">@alvaaro_dev</a>
+            </p>
+            <p>
+                
+                <i class="bi bi-github"></i>
+                <a href="https://github.com/VictorC78" style"text-decoration: none; color: black" target="_blank">VictorC78</a>
+            </p>
+            <hr>
+        </div>
+
+    </main>
+
 </body>
+
 </html>

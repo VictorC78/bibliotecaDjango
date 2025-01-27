@@ -221,16 +221,16 @@
                         <input type="hidden" name="livro_id" value="{{ livro.id }}">
 
                         {% if livro.is_reservado %}
-    {% if livro.id in livros_reservados %}
-        <button class="button-aplicar-filtros btn-cancelar" style="border-radius: 5px" type="submit">CANCELAR</button>
-    {% else %}
-        <span class="btn-indisponivel" type="button">INDISPONÍVEL</span>
-    {% endif %}
-{% else %}
-    <button class="button-aplicar-filtros btn-reservar" 
-        style="background: url('{% static 'images/card_button.png' %}') no-repeat center center !important; border-radius: 5px" 
-        type="submit">RESERVAR</button>
-{% endif %}
+                            {% if livro.id in livros_reservados %}
+                                <button class="button-aplicar-filtros btn-cancelar" style="border-radius: 5px;" type="submit">DEVOLVER</button>
+                            {% else %}
+                                <span class="btn-indisponivel" type="button">INDISPONÍVEL</span>
+                            {% endif %}
+                        {% else %}
+                            <button class="button-aplicar-filtros btn-reservar" 
+                                style="background: url('{% static 'images/card_button.png' %}') no-repeat center center !important; border-radius: 5px" 
+                                type="submit">RESERVAR</button>
+                        {% endif %}
 
                     </form>
                     </div>

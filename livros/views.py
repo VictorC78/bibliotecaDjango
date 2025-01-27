@@ -71,11 +71,13 @@ def ver_livro(request, id):
     ).exclude(id=livro.id)
     
     livros_favoritos_ids = Favorito.objects.filter(user=request.user).values_list('livro_id', flat=True)
+    livros_reservados_ids = Reserva.objects.filter(user=request.user).values_list('livro_id', flat=True)
 
     return render(request, 'livros/listar/ver_livro.html', {
         'livro': livro,
         'livros_relacionados': livros_relacionados,
         'livros_favoritos': livros_favoritos_ids,
+        'livros_reservados': livros_reservados_ids,
     })
 
 def editar_livro(request, id):
@@ -219,3 +221,8 @@ def deletar_autor(request, pk):
             return redirect('autores') 
 
     return render(request, 'livros/deletar/deletar_autor.html', {'autor': autor})
+
+
+def sobre(request):
+    
+    return render(request, 'about.html' )

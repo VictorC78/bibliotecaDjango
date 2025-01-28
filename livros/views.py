@@ -4,6 +4,7 @@ from atividades.models import Favorito, Reserva
 from livros.forms import AutorForm, CategoriaForm, ColecaoForm, LivroForm
 from livros.models import Autor, Categoria, Colecao, Livro
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 
 
 
@@ -44,6 +45,10 @@ def index(request, letra=None):
                 return redirect('index')
 
     livros = livros.order_by("?")
+    
+    paginator = Paginator(livros, 10)
+    pagina_num = request.GET.get("page")
+    livros = paginator.get_page(pagina_num)
     
     livros_favoritos_ids = Favorito.objects.filter(user=request.user).values_list('livro_id', flat=True)
     livros_reservados_ids = Reserva.objects.filter(user=request.user).values_list('livro_id', flat=True)

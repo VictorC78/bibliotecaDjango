@@ -417,6 +417,38 @@ section{
     color: rgb(255, 0, 0);
 }
 
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.pagination a, .pagination span {
+    padding: 4px 6px;
+    border: 1px solid #333;
+    text-decoration: none;
+    color: #5a4d3e;
+    border-radius: 4px;
+}
+
+.pagination a:hover {
+    background-color: #f0f0f0;
+}
+
+.pagination .active {
+    background-color: #333;
+    color: white;
+    pointer-events: none;
+}
+
+.pagination .disabled {
+    color: gray;
+    pointer-events: none;
+    border-color: gray;
+}
+
 
 
 @media (min-width: 800px) {

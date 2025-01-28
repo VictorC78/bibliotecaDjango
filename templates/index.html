@@ -241,7 +241,32 @@
             <br><br>
            
         </section>
-        <br><br><br><br>
+        <br><br>
+        <div class="pagination">
+            
+            {% if livros.has_previous %}
+                <a href="?page={{ livros.previous_page_number }}">Anterior</a>
+            {% else %}
+                <span class="disabled">Anterior</span>
+            {% endif %}
+    
+            
+            {% for num in livros.paginator.page_range %}
+                {% if livros.number == num %}
+                    <span class="active">{{ num }}</span>
+                {% else %}
+                    <a href="?page={{ num }}">{{ num }}</a>
+                {% endif %}
+            {% endfor %}
+    
+            
+            {% if livros.has_next %}
+                <a href="?page={{ livros.next_page_number }}">Próximo</a>
+            {% else %}
+                <span class="disabled">Próximo</span>
+            {% endif %}
+        </div>
+        <br><br>
 
 
         

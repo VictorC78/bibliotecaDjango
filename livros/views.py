@@ -44,7 +44,6 @@ def index(request, letra=None):
                 livro_form.save()
                 return redirect('index')
 
-    livros = livros.order_by("?")
     
     paginator = Paginator(livros, 10)
     pagina_num = request.GET.get("page")
